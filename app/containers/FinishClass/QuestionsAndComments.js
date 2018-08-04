@@ -36,4 +36,4 @@ export default compose(
   //   { key: 'homePage', reducer },
   // ),
   connect(null, null)
-)(FinishClass);
+)(QuestionsAndComments);

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { push } from 'react-router-redux';
 
 import MuiPaper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -46,6 +47,17 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
             >
               {this.props.isActiveClass ? 'Parar' : 'Começar'}
             </Button>
+            { this.props.isActiveClass &&
+              <Button
+                color="secondary"
+                variant="outlined"
+                onClick={this.props.goToFinishPage}
+                style={{ marginTop: 32, marginLeft: 16 }}
+              >
+                Finalizar aula
+              </Button>
+            }
+
           </Paper>
         </div>
       </div>
@@ -56,6 +68,7 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
 StartClass.propTypes = {
   isActiveClass: PropTypes.bool.isRequired,
   toggleActiveClass: PropTypes.func.isRequired,
+  goToFinishPage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -64,6 +77,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleActiveClass: () => dispatch(toggleActiveClass()),
+  goToFinishPage: () => dispatch(push('/finalizar-aula')),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
