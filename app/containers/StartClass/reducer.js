@@ -5,22 +5,22 @@
  */
 
 import { fromJS } from 'immutable';
-import { handle } from 'redux-pack';
+// import { handle } from 'redux-pack';
 
 import {
   DEFAULT_ACTION,
 } from './constants';
 
 const initialState = fromJS({
-  foo: 'empty',
+  isActiveClass: false,
 });
 
-const handleSuccess = (state, action) => state.merge({ foo: action.payload.foo });
+// const handleSuccess = (state, action) => state.merge({ foo: action.payload.foo });
 
-const handleAction = (state, action) =>
- handle(state, action, {
-   success: (prevState) => handleSuccess(prevState, action),
- });
+// const handleAction = (state, action) =>
+//  handle(state, action, {
+//    success: (prevState) => handleSuccess(prevState, action),
+//  });
 
 function startClassReducer(state = initialState, action) {
   switch (action.type) {

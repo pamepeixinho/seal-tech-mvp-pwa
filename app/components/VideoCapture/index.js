@@ -3,7 +3,6 @@ import Webcam from 'react-webcam';
 import styled from 'styled-components';
 
 import { uploadImage } from '../../api/backend';
-import Video from '../Video';
 
 const TIMEOUT = 5000;
 
@@ -12,12 +11,9 @@ const Wrapper = styled.div`
   position: absolute;
   width: 640px;
   height: 390px;
-  background: #F5F5F5;
+  background: #fff;
 `;
 
-const Hidden = Wrapper.extend`
-  z-index: 0;
-`;
 
 class VideoCapture extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -54,20 +50,18 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
     };
 
     return (
-      <React.Fragment>
-        <Hidden>
-          <Webcam
-            audio={false}
-            height={390}
-            ref={this.setRef}
-            screenshotFormat="image/jpeg"
-            width={640}
-            onUserMedia={this.loop}
-            videoConstraints={videoConstraints}
-          />
-        </Hidden>
-        <Wrapper />
-      </React.Fragment>
+      <div style={{ width: '100%', textAlign: 'center' }}>
+        <Webcam
+          audio={false}
+          height={290}
+          ref={this.setRef}
+          screenshotFormat="image/jpeg"
+          width={540}
+          onUserMedia={this.loop}
+          videoConstraints={videoConstraints}
+          style={{ display: 'inline-block' }}
+        />
+      </div>
     );
   }
 }

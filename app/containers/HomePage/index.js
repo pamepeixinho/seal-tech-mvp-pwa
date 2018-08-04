@@ -77,6 +77,7 @@ HomePage.propTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  goToNextStep: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
