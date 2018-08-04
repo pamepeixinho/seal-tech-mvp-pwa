@@ -15,6 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import StartClass from 'containers/StartClass/Loadable';
 import FinishClass from 'containers/FinishClass/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -23,6 +24,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/comecar-aula" component={StartClass} />
         <Route exact path="/finaliza-aula" component={FinishClass} />
         <Route component={NotFoundPage} />
       </Switch>
