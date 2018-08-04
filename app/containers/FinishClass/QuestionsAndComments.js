@@ -12,7 +12,6 @@ class QuestionsAndComments extends React.PureComponent { // eslint-disable-line 
   render() {
     return (
       <div>
-        <AppBar />
         {'name'}
         {'link'}
       </div>

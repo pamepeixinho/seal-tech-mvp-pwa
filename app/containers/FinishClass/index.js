@@ -15,11 +15,7 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
   render() {
     return (
       <div>
-        <AppBar>
-          <Toolbar>
-              Test
-          </Toolbar>
-        </AppBar>
+        <AppBar title="Teste com Usuário" />
         <QuestionsAndComments />
       </div>
     );
