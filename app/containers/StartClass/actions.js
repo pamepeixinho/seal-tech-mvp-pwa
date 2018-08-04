@@ -4,14 +4,12 @@
  *
  */
 
-import { fetch } from '../../api/fake';
 import {
-  DEFAULT_ACTION,
+  TOGGLE_ACTIVE_CLASS,
 } from './constants';
 
-export function defaultAction() {
+export function toggleActiveClass() {
   return {
-    type: DEFAULT_ACTION,
-    promise: fetch(DEFAULT_ACTION),
+    type: TOGGLE_ACTIVE_CLASS,
   };
 }

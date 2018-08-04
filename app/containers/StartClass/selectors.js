@@ -1,15 +1,9 @@
-import { createSelector } from 'reselect';
+// import { createSelector } from 'reselect';
 
 /**
  * Direct selector to the startClass state domain
  */
-const selectStartClassDomain = (state) => state.get('startClass');
+export const selectStartClassDomain = (state) => state.get('startClass');
 
-/**
- * Other specific selectors
- */
+export const selectIsActiveClass = (state) => selectStartClassDomain(state).get('isActiveClass');
 
-export const makeSelectFoo = () => createSelector(
-  selectStartClassDomain(),
-  (substate) => substate.get('foo').toJS()
-);

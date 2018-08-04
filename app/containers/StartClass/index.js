@@ -18,8 +18,10 @@ import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
 import VideoCapture from 'components/VideoCapture';
 
-// import makeSelectStartClass from './selectors';
+import { selectIsActiveClass } from './selectors';
+import { toggleActiveClass } from './actions';
 import reducer from './reducer';
+import homePageReducer from '../HomePage/reducer';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
@@ -35,14 +37,14 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
         <AppBar title="Teste com Usuário" />
         <div style={{ paddingTop: 116 }}>
           <Paper style={{ position: 'relative', textAlign: 'center' }}>
-            <VideoCapture />
+            <VideoCapture isActive={this.props.isActiveClass} />
             <Button
               color="secondary"
               variant="raised"
               onClick={this.props.toggleActiveClass}
               style={{ marginTop: 32 }}
             >
-              Começar
+              {this.props.isActiveClass ? 'Parar' : 'Começar'}
             </Button>
           </Paper>
         </div>
@@ -52,18 +54,24 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
 }
 
 StartClass.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  isActiveClass: PropTypes.bool.isRequired,
+  toggleActiveClass: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  // startclass: makeSelectStartClass(),
+  isActiveClass: selectIsActiveClass,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  toggleActiveClass: () => dispatch(toggleActiveClass()),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withReducer = injectReducer({ key: 'startClass', reducer });
+
+const withReducer = injectReducer(
+  { key: 'startClass', reducer },
+  { key: 'homePage', homePageReducer },
+);
 
 export default compose(
   withReducer,
