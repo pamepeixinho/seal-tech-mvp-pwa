@@ -28,9 +28,15 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
           <Paper>
             <h4 style={{ marginBottom: 8 }}>
               Muito Obrigado por participar do teste até o final!
-              Falta pouquinho para acabar! Responda as ultimas perguntas
+              Falta pouquinho para acabar! Responda as últimas perguntas
               e pressione o botão "Finalizar".
             </h4>
+            <div style={{ marginTop: 16 }}>
+              <span style={{ textDecoration: 'underline' }} >Faça a provinha do curso e insira o resultado:</span>
+              <form noValidate autoComplete="off">
+
+              </form>
+            </div>
             <Button
               color="secondary"
               variant="raised"

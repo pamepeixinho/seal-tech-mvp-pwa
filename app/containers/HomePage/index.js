@@ -31,6 +31,7 @@ class HomePage extends React.PureComponent {
   handleLinkChange = (evt) => this.props.handleChange('link', evt.target.value)
 
   render() {
+    const buttonDisabled = this.props.name === '' || this.props.link === '';
     return (
       <div>
         <AppBar title="Teste com Usuário" />
@@ -48,6 +49,7 @@ class HomePage extends React.PureComponent {
                   onChange={this.handleNameChange}
                   margin="normal"
                   fullWidth
+                  required
                   style={{ display: 'block' }}
                 />
               </div>
@@ -58,6 +60,7 @@ class HomePage extends React.PureComponent {
                 onChange={this.handleLinkChange}
                 margin="normal"
                 fullWidth
+                required
                 style={{ display: 'block' }}
               />
             </form>
@@ -65,6 +68,7 @@ class HomePage extends React.PureComponent {
               color="secondary"
               variant="raised"
               onClick={this.props.goToNextStep}
+              disabled={buttonDisabled}
               style={{ marginTop: 32, position: 'absolute', bottom: 32, right: 32 }}
             >
               Começar
