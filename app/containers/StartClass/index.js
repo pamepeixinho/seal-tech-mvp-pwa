@@ -17,12 +17,15 @@ import Button from '@material-ui/core/Button';
 
 import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
+import DefaultWrapper from 'components/DefaultWrapper';
 import VideoCapture from 'components/VideoCapture';
 
 import { selectIsActiveClass } from './selectors';
-import { toggleActiveClass } from './actions';
+import {
+  toggleActiveClass,
+  finishClass,
+} from './actions';
 import reducer from './reducer';
-import homePageReducer from '../HomePage/reducer';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
@@ -31,35 +34,53 @@ const Paper = styled(MuiPaper)`
   padding: 32px;
 `;
 
+const ActionsSection = styled.div`
+  text-align: center;
+  margin-top: 32px;
+`;
+
 export class StartClass extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <AppBar title="Teste com Usuário" />
-        <div style={{ paddingTop: 116 }}>
-          <Paper style={{ position: 'relative', textAlign: 'center' }}>
+        <DefaultWrapper>
+          <Paper style={{ position: 'relative' }}>
+            <h4 style={{ marginBottom: 8 }}>
+              Muito Obrigado por concordar em participar do teste!
+              Para começar pedimos para seguir as instruções abaixo:
+            </h4>
+            <ol>
+              <li>
+                Quando estiver com a video aula prestes a começar, pressione o botão para começar a
+                 gravação (Se precisar pausar, pressione "Pausar a gravação")
+              </li>
+              <li>
+                Para finalizar a gravação após acabar a video aula, pressione "Finalizar aula"
+              </li>
+            </ol>
             <VideoCapture isActive={this.props.isActiveClass} />
-            <Button
-              color="secondary"
-              variant="raised"
-              onClick={this.props.toggleActiveClass}
-              style={{ marginTop: 32 }}
-            >
-              {this.props.isActiveClass ? 'Parar' : 'Começar'}
-            </Button>
-            { this.props.isActiveClass &&
+            <ActionsSection>
               <Button
                 color="secondary"
-                variant="outlined"
-                onClick={this.props.goToFinishPage}
-                style={{ marginTop: 32, marginLeft: 16 }}
+                variant="raised"
+                onClick={this.props.toggleActiveClass}
               >
-                Finalizar aula
+                {this.props.isActiveClass ? 'Pausar a gravação' : 'Começar a gravação'}
               </Button>
-            }
-
+              { this.props.isActiveClass &&
+                <Button
+                  color="secondary"
+                  variant="outlined"
+                  onClick={this.props.goToFinishPage}
+                  style={{ marginLeft: 32 }}
+                >
+                  Finalizar aula
+                </Button>
+              }
+            </ActionsSection>
           </Paper>
-        </div>
+        </DefaultWrapper>
       </div>
     );
   }
@@ -77,14 +98,16 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleActiveClass: () => dispatch(toggleActiveClass()),
-  goToFinishPage: () => dispatch(push('/finalizar-aula')),
+  goToFinishPage: () => {
+    dispatch(finishClass());
+    dispatch(push('/finalizar-aula'));
+  },
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer(
   { key: 'startClass', reducer },
-  { key: 'homePage', homePageReducer },
 );
 
 export default compose(

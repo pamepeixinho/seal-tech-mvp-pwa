@@ -1,41 +1,58 @@
 import React from 'react';
-// import { FormattedMessage } from 'react-intl';
-// import PropTypes from 'prop-types';
-// import { createSelector } from 'reselect';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import Toolbar from '@material-ui/core/Toolbar';
 
+import MuiPaper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
+import injectReducer from 'utils/injectReducer';
+import DefaultWrapper from 'components/DefaultWrapper';
 import AppBar from 'components/AppBar';
-import QuestionsAndComments from './QuestionsAndComments';
 
-// import injectReducer from '../../utils/injectReducer';
+import reducer from './reducer';
+
+const Paper = styled(MuiPaper)`
+  max-width: 690px;
+  min-height: 440px;
+  margin: 0 auto;
+  padding: 32px;
+`;
 
 class FinishClass extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <AppBar title="Teste com Usuário" />
-        <QuestionsAndComments />
+        <DefaultWrapper>
+          <Paper>
+            <h4 style={{ marginBottom: 8 }}>
+              Muito Obrigado por participar do teste até o final!
+              Falta pouquinho para acabar! Responda as ultimas perguntas
+              e pressione o botão "Finalizar".
+            </h4>
+            <Button
+              color="secondary"
+              variant="raised"
+              onClick={() => {}}
+            >
+              Finalizar
+            </Button>
+          </Paper>
+        </DefaultWrapper>
       </div>
     );
   }
 }
 
 FinishClass.propTypes = {
-  // search: PropTypes.func.isRequired,
 };
 
-// const mapStateToProps = createSelector(
-// );
-
-// const mapDispatchToProps = (dispatch) => ({
-//   search: () => dispatch(search()),
-// });
+const withReducer = injectReducer(
+  { key: 'finishClass', reducer },
+);
 
 export default compose(
-  // injectReducer(
-  //   { key: 'homePage', reducer },
-  // ),
+  withReducer,
   connect(null, null)
 )(FinishClass);

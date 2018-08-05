@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import AppBar from 'components/AppBar';
+import DefaultWrapper from 'components/DefaultWrapper';
 
 import injectReducer from '../../utils/injectReducer';
 import reducer from './reducer';
@@ -33,9 +34,11 @@ class HomePage extends React.PureComponent {
     return (
       <div>
         <AppBar title="Teste com Usuário" />
-        <div style={{ paddingTop: 116 }}>
+        <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
-            <h4 style={{ marginBottom: 0 }}> Informe os dados para o teste: </h4>
+            <h4 style={{ marginBottom: 0 }}>
+              Informe os dados para o teste e pressione o botão para começar:
+            </h4>
             <form noValidate autoComplete="off">
               <div style={{ width: 'calc(100% - 256px)', paddingBottom: 16 }}>
                 <TextField
@@ -67,7 +70,7 @@ class HomePage extends React.PureComponent {
               Começar
             </Button>
           </Paper>
-        </div>
+        </DefaultWrapper>
       </div>
     );
   }
