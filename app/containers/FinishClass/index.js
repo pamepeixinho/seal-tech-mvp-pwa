@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import { createStructuredSelector } from 'reselect';
 
 import MuiPaper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 import injectReducer from 'utils/injectReducer';
 import DefaultWrapper from 'components/DefaultWrapper';
 import AppBar from 'components/AppBar';
 
 import reducer from './reducer';
+import { selectGrade } from './selectors';
+import { updateGrade } from './actions';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
@@ -33,8 +38,18 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
             </h4>
             <div style={{ marginTop: 16 }}>
               <span style={{ textDecoration: 'underline' }} >Faça a provinha do curso e insira o resultado:</span>
-              <form noValidate autoComplete="off">
-
+              <form
+                noValidate
+                autoComplete="off"
+                style={{ display: 'inline', marginLeft: '32px' }}
+              >
+                <TextField
+                  id="grade"
+                  label="Nota"
+                  value={this.props.grade}
+                  onChange={this.props.updateGrade}
+                  margin="normal"
+                />
               </form>
             </div>
             <Button
@@ -52,7 +67,19 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 FinishClass.propTypes = {
+  grade: PropTypes.number.isRequired,
+  updateGrade: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = createStructuredSelector({
+  grade: selectGrade,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateGrade: (evt) => dispatch(updateGrade(evt.target.value)),
+});
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer(
   { key: 'finishClass', reducer },
@@ -60,5 +87,5 @@ const withReducer = injectReducer(
 
 export default compose(
   withReducer,
-  connect(null, null)
+  withConnect,
 )(FinishClass);
