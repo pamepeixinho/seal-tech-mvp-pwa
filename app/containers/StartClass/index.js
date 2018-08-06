@@ -24,6 +24,7 @@ import { selectIsActiveClass } from './selectors';
 import {
   toggleActiveClass,
   finishClass,
+  uploadImageFrame,
 } from './actions';
 import reducer from './reducer';
 
@@ -59,7 +60,7 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
                 Para finalizar a gravação após acabar a video aula, pressione "Finalizar aula"
               </li>
             </ol>
-            <VideoCapture isActive={this.props.isActiveClass} />
+            <VideoCapture isActive={this.props.isActiveClass} uploadFrame={this.props.uploadFrame} />
             <ActionsSection>
               <Button
                 color="secondary"
@@ -96,12 +97,13 @@ const mapStateToProps = createStructuredSelector({
   isActiveClass: selectIsActiveClass,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, { match }) => ({
   toggleActiveClass: () => dispatch(toggleActiveClass()),
   goToFinishPage: () => {
     dispatch(finishClass());
-    dispatch(push('/finalizar-aula'));
+    dispatch(push(`/finalizar-aula/${match.params.id}`));
   },
+  uploadFrame: (imageSrc) => dispatch(uploadImageFrame(match.params.id, imageSrc)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

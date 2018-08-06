@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { createStructuredSelector } from 'reselect';
-import StarRatingComponent from 'react-star-rating-component';
 
 import MuiPaper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -17,7 +16,7 @@ import AppBar from 'components/AppBar';
 
 import reducer from './reducer';
 import { selectGrade, makeSelectQuestions } from './selectors';
-import { updateGrade, updateQuestion } from './actions';
+import { updateGrade, updateQuestion, uploadAndFinish } from './actions';
 import {
   OPEN_QUESTIONS_SUBJECT,
 } from './constants';
@@ -87,37 +86,22 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
 
               </ol>
             </div>
-            <Button
-              color="secondary"
-              variant="raised"
-              onClick={() => {}}
-            >
-              Finalizar
-            </Button>
+            <div style={{ textAlign: 'right', marginTop: 32 }}>
+              <Button
+                color="secondary"
+                variant="raised"
+                style={{ display: 'inline-block' }}
+                onClick={this.props.finish}
+              >
+                Finalizar
+              </Button>
+            </div>
           </Paper>
         </DefaultWrapper>
       </div>
     );
   }
 }
-
-
-{ /* <div style={{ marginBottom: 16 }}>
-                  <li>
-                    {OPEN_QUESTIONS_SUBJECT.interesting.question}
-                  </li>
-                  <span style={{ marginRight: 32 }}>1 (ruim)</span>
-                  <StarRatingComponent
-                    name={OPEN_QUESTIONS_SUBJECT.interesting.key}
-                    starCount={startsCount}
-                    value={this.props.interesting}
-                    renderStarIcon={this.renderCustomIcon}
-                    starColor="#731FB0"
-                    emptyStarColor="#DFE0E1"
-                    onStarClick={this.props.updateOpenQuestionByType}
-                  />
-                  <span style={{ marginLeft: 32 }}>5 (muito bom)</span>
-</div> */ }
 
 FinishClass.propTypes = {
   grade: PropTypes.number.isRequired,
@@ -131,9 +115,10 @@ const mapStateToProps = createStructuredSelector({
   openQuestions: makeSelectQuestions(),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, { match }) => ({
   updateGrade: (evt) => dispatch(updateGrade(evt.target.value)),
   updateOpenQuestionByType: (nextValue, prevValue, name) => dispatch(updateQuestion(name, nextValue)),
+  finish: () => dispatch(uploadAndFinish(match.params.id)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

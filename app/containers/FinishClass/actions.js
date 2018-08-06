@@ -1,4 +1,9 @@
+import { push } from 'react-router-redux';
+
+import { uploadAnswers } from 'api/train';
+
 import { UPDATE_GRADE, UPDATE_QUESTION_BY_TYPE } from './constants';
+import { selectGrade } from './selectors';
 
 export const updateGrade = (value) => ({
   type: UPDATE_GRADE,
@@ -10,4 +15,11 @@ export const updateQuestion = (questionType, value) => ({
   questionType,
   value,
 });
+
+export const uploadAndFinish = (id) => (dispatch, getState) => {
+  const grade = Number(selectGrade(getState()));
+  return uploadAnswers(id, { grade }).then(() => {
+    dispatch(push('/'));
+  });
+};
 
