@@ -44,7 +44,7 @@ class HomePage extends React.PureComponent {
               <div style={{ width: 'calc(100% - 256px)', paddingBottom: 16 }}>
                 <TextField
                   id="name"
-                  label="Name"
+                  label="Nome"
                   value={this.props.name}
                   onChange={this.handleNameChange}
                   margin="normal"
