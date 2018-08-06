@@ -16,7 +16,7 @@ import AppBar from 'components/AppBar';
 
 import reducer from './reducer';
 import { selectGrade, makeSelectQuestions } from './selectors';
-import { updateGrade, updateQuestion } from './actions';
+import { updateGrade, updateQuestion, uploadAndFinish } from './actions';
 import {
   OPEN_QUESTIONS_SUBJECT,
 } from './constants';
@@ -86,13 +86,16 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
 
               </ol>
             </div>
-            <Button
-              color="secondary"
-              variant="raised"
-              onClick={() => {}}
-            >
-              Finalizar
-            </Button>
+            <div style={{ textAlign: 'right', marginTop: 32 }}>
+              <Button
+                color="secondary"
+                variant="raised"
+                style={{ display: 'inline-block' }}
+                onClick={this.props.finish}
+              >
+                Finalizar
+              </Button>
+            </div>
           </Paper>
         </DefaultWrapper>
       </div>
@@ -112,9 +115,10 @@ const mapStateToProps = createStructuredSelector({
   openQuestions: makeSelectQuestions(),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, { match }) => ({
   updateGrade: (evt) => dispatch(updateGrade(evt.target.value)),
   updateOpenQuestionByType: (nextValue, prevValue, name) => dispatch(updateQuestion(name, nextValue)),
+  finish: () => dispatch(uploadAndFinish(match.params.id)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

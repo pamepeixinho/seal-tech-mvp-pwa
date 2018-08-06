@@ -12,3 +12,9 @@ export const uploadImageFrame = (id, image) => {
   const endpoint = `${url}/upload-frame/${id}`;
   return post(endpoint, { image });
 };
+
+export const uploadAnswers = (id, { grade }) => {
+  const endpoint = `${url}/answers/${id}`;
+  console.log({ grade });
+  return post(endpoint, { grade });
+};
