@@ -1,0 +1,17 @@
+{
+  "_id":"5b682f8c6aaf1d4d186da001",
+  "id":"5b682f8c6aaf1d4d186da001",
+  "__v":0,
+  "classLink":"https://github.com/pamepeixinho/foca-ai-dataset-capture-pwa/pull/6",
+  "emotions":[
+    {"_id":"5b6837e003d6b0aae80805eb",
+      "anger":0.00007113105,
+      "contempt":0.0009722634,
+      "disgust":0.0000186027755,
+      "fear":0.00000145743491,
+      "happiness":0.00009459169,
+      "neutral":0.9950633,
+      "sadness":0.003655327,"surprise":0.000123304708},
+      {"_id":"5b6838ad03d6b0aae80805ed","anger":0.00022252847,"contempt":0.0242014471,"disgust":0.000121648416,"fear":4.19751444e-7,"happiness":0.0125213582,"neutral":0.9575369,"sadness":0.00538385939,"surprise":0.0000118678163}
+      ],
+    "name":"Pamela Peiinho"}

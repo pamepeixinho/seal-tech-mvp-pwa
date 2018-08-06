@@ -7,3 +7,8 @@ export const initialData = (name, link) => post(`${url}/initial-data`, {
   name,
   classLink: link,
 });
+
+export const uploadImageFrame = (id, image) => {
+  const endpoint = `${url}/upload-frame/${id}`;
+  return post(endpoint, { image });
+};
