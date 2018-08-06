@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { push } from 'react-router-redux';
 
 import MuiPaper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -16,7 +15,7 @@ import DefaultWrapper from 'components/DefaultWrapper';
 import injectReducer from '../../utils/injectReducer';
 import reducer from './reducer';
 import { selectName, selectLink } from './selectors';
-import { updateField } from './actions';
+import { updateField, goToNextStep } from './actions';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
@@ -94,7 +93,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   handleChange: (fieldType, value) => dispatch(updateField(fieldType, value)),
-  goToNextStep: () => dispatch(push('/comecar-aula')),
+  goToNextStep: () => dispatch(goToNextStep()),
 });
 
 export default compose(

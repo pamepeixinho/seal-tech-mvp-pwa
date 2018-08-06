@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { createStructuredSelector } from 'reselect';
-import StarRatingComponent from 'react-star-rating-component';
 
 import MuiPaper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -100,24 +99,6 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
     );
   }
 }
-
-
-{ /* <div style={{ marginBottom: 16 }}>
-                  <li>
-                    {OPEN_QUESTIONS_SUBJECT.interesting.question}
-                  </li>
-                  <span style={{ marginRight: 32 }}>1 (ruim)</span>
-                  <StarRatingComponent
-                    name={OPEN_QUESTIONS_SUBJECT.interesting.key}
-                    starCount={startsCount}
-                    value={this.props.interesting}
-                    renderStarIcon={this.renderCustomIcon}
-                    starColor="#731FB0"
-                    emptyStarColor="#DFE0E1"
-                    onStarClick={this.props.updateOpenQuestionByType}
-                  />
-                  <span style={{ marginLeft: 32 }}>5 (muito bom)</span>
-</div> */ }
 
 FinishClass.propTypes = {
   grade: PropTypes.number.isRequired,

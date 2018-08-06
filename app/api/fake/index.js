@@ -7,7 +7,7 @@
 const defaultActionPayload = {
   mockedPayload: {
     foo: 'bar',
-  }
+  },
 };
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
