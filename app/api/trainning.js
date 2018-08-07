@@ -1,7 +1,9 @@
 import { post } from './request';
 
-// const url = 'http://fullstarks-api.sa-east-1.elasticbeanstalk.com';
-const url = 'http://localhost:4000/v2/trainning';
+// TODO: use webpack define plugin and set env vars in heroku
+const url = process.env.NODE_ENV === 'production'
+  ? 'https://focaai-api.herokuapp.com/v2/trainning'
+  : 'http://localhost:4000/v2/trainning';
 
 export const initialData = (name, link) => post(`${url}/initial-data`, {
   name,
