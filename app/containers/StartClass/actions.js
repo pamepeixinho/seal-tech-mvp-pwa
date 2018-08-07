@@ -24,10 +24,7 @@ export function finishClass() {
   };
 }
 
-export const uploadImageFrame = (id, image) => {
-  debugger;
-  return ({
+export const uploadImageFrame = (id, image) => ({
     type: UPLOAD_IMAGE_FRAME,
     promise: uploadImageFrameEndpoint(id, image),
   });
-};

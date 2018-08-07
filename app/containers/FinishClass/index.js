@@ -17,10 +17,13 @@ import AppBar from 'components/AppBar';
 import reducer from './reducer';
 import { selectGrade, makeSelectQuestions } from './selectors';
 import { updateGrade, updateQuestion, uploadAndFinish } from './actions';
+import SubjectQuestion from './SubjectQuestion';
 import {
   OPEN_QUESTIONS_SUBJECT,
+  OPEN_QUESTIONS_RYTHM,
+  OPEN_QUESTIONS_DIDACTICS,
+  OPEN_QUESTIONS_COMMITMENT,
 } from './constants';
-import OpenQuestion from './OpenQuestion';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
@@ -68,23 +71,34 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
               </form>
             </div>
             <div style={{ marginTop: 16 }}>
-              <Questions>Responda as perguntas abaixo, colocando um valor entre 1 e 5</Questions>
-
-              <p>Assunto</p>
-              <ol>
-                {Object.keys(OPEN_QUESTIONS_SUBJECT).map((subjectQuestionKey) => {
-                  const subject = OPEN_QUESTIONS_SUBJECT[subjectQuestionKey];
-                  return (
-                    <OpenQuestion
-                      question={subject.question}
-                      keyName={subject.key}
-                      value={this.props.openQuestions[subject.key]}
-                      updateOpenQuestionByType={this.props.updateOpenQuestionByType}
-                    />
-                  );
-                })}
-
-              </ol>
+              <Questions>
+                Responda o questionário abaixo sobre a aula que vocês acabou de assistir.
+                Utilize uma escala de 1-5, onde 5 significa concordo plenamente e 1 discordo plenamente.
+              </Questions>
+              <SubjectQuestion
+                title="Conteúdo"
+                openQuestionType={OPEN_QUESTIONS_SUBJECT}
+                openQuestions={this.props.openQuestions}
+                updateOpenQuestionByType={this.props.updateOpenQuestionByType}
+              />
+              <SubjectQuestion
+                title="Engajamento"
+                openQuestionType={OPEN_QUESTIONS_COMMITMENT}
+                openQuestions={this.props.openQuestions}
+                updateOpenQuestionByType={this.props.updateOpenQuestionByType}
+              />
+              <SubjectQuestion
+                title="Ritmo"
+                openQuestionType={OPEN_QUESTIONS_RYTHM}
+                openQuestions={this.props.openQuestions}
+                updateOpenQuestionByType={this.props.updateOpenQuestionByType}
+              />
+              <SubjectQuestion
+                title="Didática"
+                openQuestionType={OPEN_QUESTIONS_DIDACTICS}
+                openQuestions={this.props.openQuestions}
+                updateOpenQuestionByType={this.props.updateOpenQuestionByType}
+              />
             </div>
             <div style={{ textAlign: 'right', marginTop: 32 }}>
               <Button

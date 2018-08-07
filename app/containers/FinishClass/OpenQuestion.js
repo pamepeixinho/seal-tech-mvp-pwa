@@ -14,8 +14,6 @@ class OpenQuestion extends React.PureComponent { // eslint-disable-line react/pr
   )
 
   render() {
-    debugger;
-    console.log('ue');
     return (
       <div style={{ marginBottom: 16 }}>
         <li>
