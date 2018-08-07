@@ -14,8 +14,7 @@ import {
 
 const initialState = fromJS({
   grade: 0,
-  openQuestions: {
-  },
+  openQuestions: {},
 });
 
 function startClassReducer(state = initialState, action) {

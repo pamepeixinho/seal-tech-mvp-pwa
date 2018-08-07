@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 
-import { initialData } from 'api/train';
+import { initialData } from 'api/trainning';
 
 import { UPDATE_FIELD } from './constants';
 import { selectName, selectLink } from './selectors';

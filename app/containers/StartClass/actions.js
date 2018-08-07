@@ -4,7 +4,7 @@
  *
  */
 
-import { uploadImageFrame as uploadImageFrameEndpoint } from 'api/train';
+import { uploadImageFrame as uploadImageFrameEndpoint } from 'api/trainning';
 
 import {
   TOGGLE_ACTIVE_CLASS,
@@ -25,6 +25,6 @@ export function finishClass() {
 }
 
 export const uploadImageFrame = (id, image) => ({
-    type: UPLOAD_IMAGE_FRAME,
-    promise: uploadImageFrameEndpoint(id, image),
-  });
+  type: UPLOAD_IMAGE_FRAME,
+  promise: uploadImageFrameEndpoint(id, image),
+});

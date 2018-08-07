@@ -1,7 +1,7 @@
 import { post } from './request';
 
 // const url = 'http://fullstarks-api.sa-east-1.elasticbeanstalk.com';
-const url = 'http://localhost:4000/train';
+const url = 'http://localhost:4000/v2/trainning';
 
 export const initialData = (name, link) => post(`${url}/initial-data`, {
   name,
@@ -13,8 +13,7 @@ export const uploadImageFrame = (id, image) => {
   return post(endpoint, { image });
 };
 
-export const uploadAnswers = (id, { grade }) => {
+export const uploadAnswers = (id, answers) => {
   const endpoint = `${url}/answers/${id}`;
-  console.log({ grade });
-  return post(endpoint, { grade });
+  return post(endpoint, answers);
 };
