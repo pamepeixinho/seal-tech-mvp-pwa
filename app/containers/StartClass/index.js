@@ -53,6 +53,9 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
             </h4>
             <ol>
               <li>
+                Clique em "Permitir" se seu browser pedir o acesso via popup
+              </li>
+              <li>
                 Quando estiver com a video aula prestes a começar, pressione o botão para começar a
                  gravação (Se precisar pausar, pressione "Pausar a gravação")
               </li>
