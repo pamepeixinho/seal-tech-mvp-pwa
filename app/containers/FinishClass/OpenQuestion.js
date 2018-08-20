@@ -19,7 +19,7 @@ class OpenQuestion extends React.PureComponent { // eslint-disable-line react/pr
         <li>
           {this.props.question}
         </li>
-        <span style={{ marginRight: 32 }}>1 (ruim)</span>
+        <span style={{ marginRight: 32, color: 'grey' }}>1</span>
         <StarRatingComponent
           name={this.props.keyName}
           starCount={startsCount}
@@ -29,7 +29,7 @@ class OpenQuestion extends React.PureComponent { // eslint-disable-line react/pr
           emptyStarColor="#DFE0E1"
           onStarClick={this.props.updateOpenQuestionByType}
         />
-        <span style={{ marginLeft: 32 }}>5 (muito bom)</span>
+        <span style={{ marginLeft: 32, color: 'grey' }}>5</span>
       </div>
     );
   }

@@ -55,7 +55,7 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
               e pressione o botão "Finalizar".
             </h4>
             <div style={{ marginTop: 16 }}>
-              <Questions>Faça a provinha do curso e insira o resultado:</Questions>
+              <Questions>Faça a provinha do curso, se houver, e insira o resultado:</Questions>
               <form
                 noValidate
                 autoComplete="off"

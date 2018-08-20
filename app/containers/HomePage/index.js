@@ -63,6 +63,7 @@ class HomePage extends React.PureComponent {
                 style={{ display: 'block' }}
               />
             </form>
+            <p>Atenção: pedimos que nos dê acesso na webcam para colhermos alguns dados, mas fique tranquilo porque não iremos amarzenar nada :) </p>
             <Button
               color="secondary"
               variant="raised"
