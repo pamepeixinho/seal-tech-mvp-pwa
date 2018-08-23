@@ -2,7 +2,7 @@ import { push } from 'react-router-redux';
 
 import { initialData } from 'api/trainning';
 
-import { UPDATE_FIELD } from './constants';
+import { UPDATE_FIELD, SET_LOADING } from './constants';
 import { selectName, selectLink } from './selectors';
 
 export const updateField = (fieldType, value) => ({
@@ -11,11 +11,21 @@ export const updateField = (fieldType, value) => ({
   value,
 });
 
+export const setLoading = (loading) => ({
+  type: SET_LOADING,
+  loading,
+});
+
 export const goToNextStep = () => (dispatch, getState) => {
   const name = selectName(getState());
   const link = selectLink(getState());
-  return initialData(name, link).then((data) => {
-    const { id } = data;
-    dispatch(push(`/treinamento/comecar-aula/${id}`));
-  });
+  dispatch(setLoading(true));
+  return initialData(name, link).then(
+    (data) => {
+      const { id } = data;
+      dispatch(setLoading(false));
+      dispatch(push(`/treinamento/comecar-aula/${id}`));
+    },
+    () => dispatch(setLoading(false))
+  );
 };
