@@ -20,11 +20,12 @@ import AppBar from 'components/AppBar';
 import DefaultWrapper from 'components/DefaultWrapper';
 import VideoCapture from 'components/VideoCapture';
 
-import { selectIsActiveClass } from './selectors';
+import { selectIsActiveClass, selectIsWebcamAllowed } from './selectors';
 import {
   toggleActiveClass,
   finishClass,
   uploadImageFrame,
+  webcamAllowed,
 } from './actions';
 import reducer from './reducer';
 
@@ -63,16 +64,20 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
                 Para finalizar a gravação após acabar a video aula, pressione "Finalizar aula"
               </li>
             </ol>
-            <VideoCapture isActive={this.props.isActiveClass} uploadFrame={this.props.uploadFrame} />
+            <VideoCapture
+              isActive={this.props.isActiveClass}
+              uploadFrame={this.props.uploadFrame}
+              webcamAllowedCallback={this.props.triggerWebcamAllowed}
+            />
             <ActionsSection>
               <Button
                 color="secondary"
                 variant="raised"
                 onClick={this.props.toggleActiveClass}
               >
-                {this.props.isActiveClass ? 'Pausar a gravação' : 'Começar a gravação'}
+                {this.props.isActiveClass && this.props.isWebcamAllowed ? 'Pausar a gravação' : 'Começar a gravação'}
               </Button>
-              { this.props.isActiveClass &&
+              { this.props.isActiveClass && this.props.isWebcamAllowed &&
                 <Button
                   color="secondary"
                   variant="outlined"
@@ -98,10 +103,12 @@ StartClass.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   isActiveClass: selectIsActiveClass,
+  isWebcamAllowed: selectIsWebcamAllowed,
 });
 
 const mapDispatchToProps = (dispatch, { match }) => ({
   toggleActiveClass: () => dispatch(toggleActiveClass()),
+  triggerWebcamAllowed: () => dispatch(webcamAllowed()),
   goToFinishPage: () => {
     dispatch(finishClass());
     dispatch(push(`/finalizar-aula/${match.params.id}`));

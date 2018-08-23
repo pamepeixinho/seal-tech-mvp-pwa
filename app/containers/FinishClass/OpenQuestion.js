@@ -16,20 +16,20 @@ class OpenQuestion extends React.PureComponent { // eslint-disable-line react/pr
   render() {
     return (
       <div style={{ marginBottom: 16 }}>
-        <li>
+        <li style={{ paddingBottom: 16 }}>
           {this.props.question}
         </li>
-        <span style={{ marginRight: 32, color: 'grey' }}>1</span>
-        <StarRatingComponent
-          name={this.props.keyName}
-          starCount={startsCount}
-          value={this.props.value}
-          renderStarIcon={this.renderCustomIcon}
-          starColor="#731FB0"
-          emptyStarColor="#DFE0E1"
-          onStarClick={this.props.updateOpenQuestionByType}
-        />
-        <span style={{ marginLeft: 32, color: 'grey' }}>5</span>
+        <div style={{ marginLeft: 16 }}>
+          <StarRatingComponent
+            name={this.props.keyName}
+            starCount={startsCount}
+            value={this.props.value}
+            renderStarIcon={this.renderCustomIcon}
+            starColor="#731FB0"
+            emptyStarColor="#DFE0E1"
+            onStarClick={this.props.updateOpenQuestionByType}
+          />
+        </div>
       </div>
     );
   }
