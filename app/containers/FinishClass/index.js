@@ -7,7 +7,6 @@ import { createStructuredSelector } from 'reselect';
 
 import MuiPaper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Brightness1 from '@material-ui/icons/Brightness1';
 
 import injectReducer from 'utils/injectReducer';
@@ -54,7 +53,7 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
               Falta pouquinho para acabar! Responda as últimas perguntas
               e pressione o botão "Finalizar".
             </h4>
-            <div style={{ marginTop: 16 }}>
+            {/* <div style={{ marginTop: 16 }}>
               <Questions>Faça a provinha do curso, se houver, e insira o resultado:</Questions>
               <form
                 noValidate
@@ -69,7 +68,7 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
                   margin="normal"
                 />
               </form>
-            </div>
+            </div> */}
             <div style={{ marginTop: 16 }}>
               <Questions>
                 Responda o questionário abaixo sobre a aula que vocês acabou de assistir.
@@ -118,9 +117,8 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 FinishClass.propTypes = {
-  grade: PropTypes.number.isRequired,
   openQuestions: PropTypes.object.isRequired,
-  updateGrade: PropTypes.func.isRequired,
+  finish: PropTypes.func,
   updateOpenQuestionByType: PropTypes.func.isRequired,
 };
 
