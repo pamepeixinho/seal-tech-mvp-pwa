@@ -5,7 +5,7 @@ import Webcam from 'react-webcam';
 const TIMEOUT = 10000;
 class VideoCapture extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
-    wip: true,
+    wip: false,
   }
 
   componentWillUnmount() {
@@ -18,6 +18,8 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   loop = () => {
+    this.setState({ wip: true });
+    this.props.webcamAllowedCallback();
     this.interval = setInterval(() => {
       this.capture();
     }, TIMEOUT);
