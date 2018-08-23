@@ -14,18 +14,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import StartClass from 'containers/StartClass/Loadable';
-import FinishClass from 'containers/FinishClass/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+
+import routes from '../../routes/index';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/comecar-aula/:id" component={StartClass} />
-        <Route exact path="/finalizar-aula/:id" component={FinishClass} />
+        {routes.map(({ path, component }) => (<Route exact key={path} path={path} component={component} />))}
         <Route component={NotFoundPage} />
       </Switch>
     </div>
