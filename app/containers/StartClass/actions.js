@@ -10,6 +10,7 @@ import {
   TOGGLE_ACTIVE_CLASS,
   FINISH_CLASS,
   UPLOAD_IMAGE_FRAME,
+  WEBCAM_HAS_BEEN_ALLLOWED,
 } from './constants';
 
 export function toggleActiveClass() {
@@ -27,4 +28,8 @@ export function finishClass() {
 export const uploadImageFrame = (id, image) => ({
   type: UPLOAD_IMAGE_FRAME,
   promise: uploadImageFrameEndpoint(id, image),
+});
+
+export const webcamAllowed = () => ({
+  type: WEBCAM_HAS_BEEN_ALLLOWED,
 });
