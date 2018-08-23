@@ -11,7 +11,7 @@ import {
   FINISH_CLASS,
   WEBCAM_HAS_BEEN_ALLLOWED,
 } from './constants';
-import { CLEAR_STATE } from '../constants';
+import { CLEAR_STATE } from '../../constants';
 
 const initialState = fromJS({
   isActiveClass: false,

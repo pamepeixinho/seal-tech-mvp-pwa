@@ -13,8 +13,8 @@ import withWidth from '@material-ui/core/withWidth';
 
 import AppBar from 'components/AppBar';
 import DefaultWrapper from 'components/DefaultWrapper';
+import injectReducer from 'utils/injectReducer';
 
-import injectReducer from '../../utils/injectReducer';
 import reducer from './reducer';
 import { selectName, selectLink, selectLoading } from './selectors';
 import { updateField, goToNextStep } from './actions';
