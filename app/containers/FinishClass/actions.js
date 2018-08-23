@@ -29,7 +29,7 @@ export const uploadAndFinish = (id) => (dispatch, getState) => {
   const questions = makeSelectQuestions()(getState());
   return uploadAnswers(id, { grade, ...questions }).then(() => {
     dispatch(clearState());
-    dispatch(push('/'));
+    dispatch(push('/treinamento'));
   });
 };
 
