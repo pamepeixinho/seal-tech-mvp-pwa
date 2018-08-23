@@ -1,2 +1,19 @@
-# foca-ai-dataset-capture-pwa
-PWA to capture our dataset 
+# SealTech MVP PWA
+
+## Requirements
+
+- node
+
+## Setup
+
+### Install
+
+```shell
+npm install
+```
+
+### Running
+
+```shell
+npm start
+```
