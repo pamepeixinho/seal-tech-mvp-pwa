@@ -8,6 +8,7 @@ import { compose } from 'recompose';
 import MuiPaper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import withWidth from '@material-ui/core/withWidth';
 
 import AppBar from 'components/AppBar';
 import DefaultWrapper from 'components/DefaultWrapper';
@@ -40,7 +41,7 @@ class HomePage extends React.PureComponent {
               Informe os dados para o teste e pressione o botão para começar:
             </h4>
             <form noValidate autoComplete="off">
-              <div style={{ width: 'calc(100% - 256px)', paddingBottom: 16 }}>
+              <div style={{ width: this.props.width === 'xs' ? '100%' : 'calc(100% - 256px)', paddingBottom: 16 }}>
                 <TextField
                   id="name"
                   label="Nome"
@@ -69,7 +70,7 @@ class HomePage extends React.PureComponent {
               variant="raised"
               onClick={this.props.goToNextStep}
               disabled={buttonDisabled}
-              style={{ marginTop: 32, position: 'absolute', bottom: 32, right: 32 }}
+              style={{ marginTop: 32, position: 'absolute', bottom: 22, right: 32 }}
             >
               Começar
             </Button>
@@ -81,6 +82,7 @@ class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
+  width: PropTypes.string,
   name: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
@@ -101,5 +103,6 @@ export default compose(
   injectReducer(
     { key: 'homePage', reducer },
   ),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
+  withWidth(),
 )(HomePage);
