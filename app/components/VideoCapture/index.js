@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 
-const TIMEOUT = 5000;
+const TIMEOUT = 10000;
 class VideoCapture extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     wip: true,
