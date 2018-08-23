@@ -111,7 +111,7 @@ const mapDispatchToProps = (dispatch, { match }) => ({
   triggerWebcamAllowed: () => dispatch(webcamAllowed()),
   goToFinishPage: () => {
     dispatch(finishClass());
-    dispatch(push(`/finalizar-aula/${match.params.id}`));
+    dispatch(push(`/treinamento/finalizar-aula/${match.params.id}`));
   },
   uploadFrame: (imageSrc) => dispatch(uploadImageFrame(match.params.id, imageSrc)),
 });

@@ -16,6 +16,6 @@ export const goToNextStep = () => (dispatch, getState) => {
   const link = selectLink(getState());
   return initialData(name, link).then((data) => {
     const { id } = data;
-    dispatch(push(`/comecar-aula/${id}`));
+    dispatch(push(`/treinamento/comecar-aula/${id}`));
   });
 };
