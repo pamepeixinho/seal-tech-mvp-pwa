@@ -1,6 +1,6 @@
-import HomePage from 'containers/HomePage/Loadable';
-import StartClass from 'containers/StartClass/Loadable';
-import FinishClass from 'containers/FinishClass/Loadable';
+import HomePage from 'containers/Trainning/HomePage/Loadable';
+import StartClass from 'containers/Trainning/StartClass/Loadable';
+import FinishClass from 'containers/Trainning/FinishClass/Loadable';
 
 const trainning = '/treinamento';
 

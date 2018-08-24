@@ -6,7 +6,7 @@
 
 import { fromJS } from 'immutable';
 
-import { CLEAR_STATE } from '../constants';
+import { CLEAR_STATE } from '../../constants';
 import {
   UPDATE_GRADE,
   UPDATE_QUESTION_BY_TYPE,

@@ -6,7 +6,7 @@ import {
   UPDATE_GRADE,
   UPDATE_QUESTION_BY_TYPE,
 } from './constants';
-import { CLEAR_STATE } from '../constants';
+import { CLEAR_STATE } from '../../constants';
 import { selectGrade, makeSelectQuestions } from './selectors';
 
 export const updateGrade = (value) => ({

@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { CLEAR_STATE } from '../constants';
+import { CLEAR_STATE } from '../../constants';
 import {
   UPDATE_FIELD,
   SET_LOADING,
