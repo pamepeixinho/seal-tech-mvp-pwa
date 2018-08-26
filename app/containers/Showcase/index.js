@@ -65,8 +65,6 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
             <br />
             neutral: {this.props.neutral}
             <br />
-            neutral: {this.props.neutral}
-            <br />
             sadness: {this.props.sadness}
             <br />
             surprise: {this.props.surprise}
