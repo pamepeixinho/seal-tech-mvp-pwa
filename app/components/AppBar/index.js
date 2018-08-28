@@ -39,7 +39,7 @@ const AppBarTitle = ({ title }) => (
 );
 
 AppBarTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default AppBarTitle;
