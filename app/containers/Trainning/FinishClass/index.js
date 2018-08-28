@@ -45,7 +45,7 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
   render() {
     return (
       <div>
-        <AppBar title="Teste com Usuário" />
+        <AppBar />
         <DefaultWrapper>
           <Paper>
             <h4 style={{ marginBottom: 8 }}>
