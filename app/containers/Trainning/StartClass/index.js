@@ -45,7 +45,7 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <div>
-        <AppBar title="Teste com Usuário" />
+        <AppBar />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
             <h4 style={{ marginBottom: 8 }}>

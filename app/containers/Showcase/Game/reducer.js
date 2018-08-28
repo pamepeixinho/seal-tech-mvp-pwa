@@ -10,7 +10,7 @@ import { handle } from 'redux-pack';
 import {
   UPLOAD_IMAGE_FRAME,
 } from './constants';
-import { CLEAR_STATE } from '../constants';
+import { CLEAR_STATE } from '../../constants';
 
 const initialState = fromJS({
   anger: 0,

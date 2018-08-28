@@ -35,7 +35,7 @@ class HomePage extends React.PureComponent {
     const buttonDisabled = this.props.name === '' || this.props.link === '';
     return (
       <div>
-        <AppBar title="Teste com Usuário" />
+        <AppBar />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
             <h4 style={{ marginBottom: 0 }}>

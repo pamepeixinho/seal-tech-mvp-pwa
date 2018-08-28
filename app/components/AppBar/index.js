@@ -4,40 +4,42 @@ import styled from 'styled-components';
 
 import MuiAppBar from '@material-ui/core/AppBar';
 
-import Logo from 'images/logo.png';
+import Logo from 'images/logo-sealtech.png';
 
 const AppBar = styled(MuiAppBar)`
   box-shadow: none;
   border-bottom: 1px solid #E7E7E7;
-  padding-top: 8px;
-  padding-left: 24px;
+  padding: 16px;
   background: white;
   color: #731FB0;
 `;
 
-const Title = styled.h3`
+const Title = styled.span`
   margin-left: 24px;
+  font-weight: bold;
+  font-size: 22px;
   display: inline-block;
 `;
 
 const Img = styled.img`
   height: 31px;
-  width: 42px;
 `;
 
 const AppBarTitle = ({ title }) => (
   <AppBar>
     <div>
       <Img src={Logo} alt="logo" />
-      <Title>
-        { title }
-      </Title>
+      { title ?
+        <Title>
+          { title }
+        </Title> : null
+      }
     </div>
   </AppBar>
 );
 
 AppBarTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default AppBarTitle;
