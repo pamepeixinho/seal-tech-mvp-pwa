@@ -80,29 +80,41 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
         <AppBar title="Showcase" />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
-            <VideoCapture
-              isActive={this.state.progressCompleted < 100}
-              uploadFrame={this.props.uploadFrame}
-              webcamAllowedCallback={() => {}}
-            />
-            anger: {this.props.anger}
-            <br />
-            contempt: {this.props.contempt}
-            <br />
-            disgust: {this.props.disgust}
-            <br />
-            fear: {this.props.fear}
-            <br />
-            happiness: {this.props.happiness}
-            <br />
-            neutral: {this.props.neutral}
-            <br />
-            sadness: {this.props.sadness}
-            <br />
-            surprise: {this.props.surprise}
-            <br />
-            <br />
-            commitment: {this.props.commitment}
+
+            <div style={{ height: '440px' }}>
+              <div style={{ position: 'absolute' }}>
+
+                <VideoCapture
+                  isActive={this.state.progressCompleted < 100}
+                  uploadFrame={this.props.uploadFrame}
+                  webcamAllowedCallback={() => {}}
+                />
+
+                <div style={{ marginTop: '-100px', marginLeft: '50px' }}>
+                  <Typography variant="display2" color="primary" gutterBottom>
+                    anger: {this.props.anger}
+                  </Typography>
+                </div>
+
+                {/* <br />
+                contempt: {this.props.contempt} */}
+                {/* <br />
+                disgust: {this.props.disgust}
+                <br />
+                fear: {this.props.fear}
+                <br />
+                happiness: {this.props.happiness}
+                <br />
+                neutral: {this.props.neutral}
+                <br />
+                sadness: {this.props.sadness}
+                <br />
+                surprise: {this.props.surprise}
+                <br />
+                <br />
+                commitment: {this.props.commitment} */}
+              </div>
+            </div>
 
             {this.state.progressCompleted === 100 &&
               <Typography variant="display2" gutterBottom>
@@ -120,15 +132,15 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
 Showcase.propTypes = {
   uploadFrame: PropTypes.func,
-  anger: PropTypes.number,
-  contempt: PropTypes.number,
-  disgust: PropTypes.number,
-  fear: PropTypes.number,
-  happiness: PropTypes.number,
-  neutral: PropTypes.number,
-  sadness: PropTypes.number,
-  surprise: PropTypes.number,
   commitment: PropTypes.number,
+  anger: PropTypes.number,
+  // contempt: PropTypes.number,
+  // disgust: PropTypes.number,
+  // fear: PropTypes.number,
+  // happiness: PropTypes.number,
+  // neutral: PropTypes.number,
+  // sadness: PropTypes.number,
+  // surprise: PropTypes.number,
 };
 
 const mapDispatchToProps = (dispatch, { match }) => ({
