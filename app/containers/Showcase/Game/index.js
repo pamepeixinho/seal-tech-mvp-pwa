@@ -6,12 +6,14 @@
 
 import React from 'react';
 import styled from 'styled-components';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import MuiPaper from '@material-ui/core/Paper';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
 
 import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
@@ -42,14 +44,44 @@ const Paper = styled(MuiPaper)`
 `;
 
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  state = {
+    progressCompleted: 0,
+    victoryThreshold: 8.0,
+    userWon: false,
+  };
+
+  componentDidMount() {
+    this.timer = setInterval(this.progress, 100);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  timer = null;
+
+  progress = () => {
+    const { progressCompleted } = this.state;
+    if (progressCompleted < 100) {
+      this.setState({ progressCompleted: progressCompleted + 1 });
+    }
+  };
+
   render() {
+    if (this.props.commitment >= 8) {
+      this.setState({ userWon: true });
+    }
+
+    const message = this.state.userWon ? 'You won' : 'you lose';
+
     return (
       <div>
         <AppBar title="Showcase" />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
             <VideoCapture
-              isActive
+              isActive={this.state.progressCompleted < 100}
               uploadFrame={this.props.uploadFrame}
               webcamAllowedCallback={() => {}}
             />
@@ -71,12 +103,33 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
             <br />
             <br />
             commitment: {this.props.commitment}
+
+            {this.state.progressCompleted === 100 &&
+              <Typography variant="display2" gutterBottom>
+                {message}
+              </Typography>
+            }
+
+            <LinearProgress variant="determinate" value={this.state.progressCompleted} />
           </Paper>
         </DefaultWrapper>
       </div>
     );
   }
 }
+
+Showcase.propTypes = {
+  uploadFrame: PropTypes.func,
+  anger: PropTypes.number,
+  contempt: PropTypes.number,
+  disgust: PropTypes.number,
+  fear: PropTypes.number,
+  happiness: PropTypes.number,
+  neutral: PropTypes.number,
+  sadness: PropTypes.number,
+  surprise: PropTypes.number,
+  commitment: PropTypes.number,
+};
 
 const mapDispatchToProps = (dispatch, { match }) => ({
   uploadFrame: (imageSrc) => dispatch(uploadImageFrame(match.params.id, imageSrc)),

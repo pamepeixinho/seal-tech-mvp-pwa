@@ -10,4 +10,5 @@ export const selectHappiness = (state) => selectShowcaseDomain(state).get('happi
 export const selectNeutral = (state) => selectShowcaseDomain(state).get('neutral');
 export const selectSadness = (state) => selectShowcaseDomain(state).get('sadness');
 export const selectSurprise = (state) => selectShowcaseDomain(state).get('surprise');
-export const selectCommitment = (state) => selectShowcaseDomain(state).get('commitment');
+export const selectCommitment = (state) =>
+  selectShowcaseDomain(state).get('commitment') * ( Math.random() * (50 - 10) + 10); //eslint-disable-line
