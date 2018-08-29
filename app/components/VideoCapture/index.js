@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 
-const TIMEOUT = 10000;
+const TIMEOUT = 1000;
 class VideoCapture extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
     wip: false,
@@ -27,11 +27,8 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   capture = () => {
     if (this.state.wip) {
-      // console.log('test', n++);
       const imageSrc = this.webcam.getScreenshot();
       this.props.uploadFrame(imageSrc);
-      console.log(imageSrc);
-      // uploadImage(imageSrc);
     }
   };
 
@@ -66,6 +63,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 VideoCapture.propTypes = {
   isActive: PropTypes.bool,
   uploadFrame: PropTypes.func,
+  webcamAllowedCallback: PropTypes.func,
 };
 
 export default VideoCapture;
