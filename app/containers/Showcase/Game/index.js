@@ -37,10 +37,10 @@ import {
 import reducer from './reducer';
 
 const Paper = styled(MuiPaper)`
-  max-width: 690px;
-  min-height: 440px;
-  margin: 0 auto;
-  padding: 32px;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  margin: 16px;
+  padding: 16px;
 `;
 
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -77,32 +77,35 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
     return (
       <div>
-        <AppBar title="Showcase" />
-        <DefaultWrapper>
+        <AppBar />
+        <DefaultWrapper style={{ paddingTop: 65 }}>
           <Paper style={{ position: 'relative' }}>
             <VideoCapture
               isActive={this.state.progressCompleted < 100}
               uploadFrame={this.props.uploadFrame}
               webcamAllowedCallback={() => {}}
+              height={840}
             />
-            anger: {this.props.anger}
-            <br />
-            contempt: {this.props.contempt}
-            <br />
-            disgust: {this.props.disgust}
-            <br />
-            fear: {this.props.fear}
-            <br />
-            happiness: {this.props.happiness}
-            <br />
-            neutral: {this.props.neutral}
-            <br />
-            sadness: {this.props.sadness}
-            <br />
-            surprise: {this.props.surprise}
-            <br />
-            <br />
-            commitment: {this.props.commitment}
+            <div style={{ position: 'absolute', top: 48 }}>
+              anger: {this.props.anger}
+              <br />
+              contempt: {this.props.contempt}
+              <br />
+              disgust: {this.props.disgust}
+              <br />
+              fear: {this.props.fear}
+              <br />
+              happiness: {this.props.happiness}
+              <br />
+              neutral: {this.props.neutral}
+              <br />
+              sadness: {this.props.sadness}
+              <br />
+              surprise: {this.props.surprise}
+              <br />
+              <br />
+              commitment: {this.props.commitment}
+            </div>
 
             {this.state.progressCompleted === 100 &&
               <Typography variant="display2" gutterBottom>
