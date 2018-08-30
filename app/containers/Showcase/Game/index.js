@@ -98,7 +98,7 @@ const RandomPosition = styled.div`
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    countdown: 100,
+    countdown: 10,
     victoryThreshold: 8.0,
     userWon: false,
   };
@@ -108,7 +108,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.progress, 100);
+    this.timer = setInterval(this.progress, 1000);
     setInterval(this.suffle, 1000);
   }
 
@@ -141,6 +141,9 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
       <div>
         <AppBar />
         <DefaultWrapper style={{ paddingTop: 65 }}>
+          <p style={{ margin: '32px', textAlign: 'center', fontSize: 24 }}>
+            {this.state.countdown}
+          </p>
           <div style={{ position: 'relative', margin: '64px 16px 16px' }}>
             <VideoCapture
               isActive={this.state.countdown < 100}
@@ -181,8 +184,6 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               {message}
             </Typography>
           }
-
-          <LinearProgress variant="determinate" value={this.state.countdown} />
         </DefaultWrapper>
       </div>
     );
