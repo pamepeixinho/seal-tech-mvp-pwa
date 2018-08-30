@@ -5,23 +5,41 @@
  */
 
 import React from 'react';
-// import styled from 'styled-components';
-// import PropTypes from 'prop-types';
 
-import EmotionsGif from 'images/emotions.gif';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
+import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
 
+import {
+  selectWon,
+} from '../Game/selector';
+import reducer from '../Game/reducer';
 
 export class Finish extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <AppBar />
-        <Img src={EmotionsGif} alt="emotions gif" />
+        <div style={{ marginTop: 68 }}> {this.props.hasWon ? 'You won' : 'You loose'} </div>
       </div>
     );
   }
 }
 
-export default Finish;
+const mapStateToProps = createStructuredSelector({
+  hasWon: selectWon,
+});
+
+const withConnect = connect(mapStateToProps, null);
+
+const withReducer = injectReducer(
+  { key: 'showcase', reducer },
+);
+
+export default compose(
+  withReducer,
+  withConnect,
+)(Finish);

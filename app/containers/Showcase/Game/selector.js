@@ -17,3 +17,5 @@ export const selectCommitment = (state) => {
   const commitment = commitmentRate * (Math.random() * (50 - 10) + 10);  //eslint-disable-line
   return commitment.toFixed(FIXED_DECIMAL);
 };
+
+export const selectWon = (state) => selectShowcaseDomain(state).get('hasWon');
