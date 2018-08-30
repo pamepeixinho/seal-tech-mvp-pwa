@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
-import MuiPaper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 
@@ -99,7 +98,7 @@ const RandomPosition = styled.div`
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    progressCompleted: 0,
+    countdown: 100,
     victoryThreshold: 8.0,
     userWon: false,
   };
@@ -125,9 +124,9 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   }
 
   progress = () => {
-    const { progressCompleted } = this.state;
-    if (progressCompleted < 100) {
-      this.setState({ progressCompleted: progressCompleted + 1 });
+    const { countdown } = this.state;
+    if (countdown > 0) {
+      this.setState({ countdown: countdown - 1 });
     }
   };
 
@@ -144,7 +143,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
         <DefaultWrapper style={{ paddingTop: 65 }}>
           <div style={{ position: 'relative', margin: '64px 16px 16px' }}>
             <VideoCapture
-              isActive={this.state.progressCompleted < 100}
+              isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
               webcamAllowedCallback={() => {}}
               height={720}
@@ -177,13 +176,13 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
           commitment: {this.props.commitment}
 
-          {this.state.progressCompleted === 100 &&
+          {this.state.countdown === 0 &&
             <Typography variant="display2" gutterBottom>
               {message}
             </Typography>
           }
 
-          <LinearProgress variant="determinate" value={this.state.progressCompleted} />
+          <LinearProgress variant="determinate" value={this.state.countdown} />
         </DefaultWrapper>
       </div>
     );
