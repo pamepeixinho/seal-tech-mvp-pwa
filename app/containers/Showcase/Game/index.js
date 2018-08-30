@@ -16,6 +16,8 @@ import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
 import DefaultWrapper from 'components/DefaultWrapper';
 import VideoCapture from 'components/VideoCapture';
+import Seal from '../../../assets/images/progressbar_foca cheia.svg';
+import EmptySeal from '../../../assets/images/progressbar_foca vazia.svg';
 
 import {
   selectAnger,
@@ -94,6 +96,20 @@ const RandomPosition = styled.div`
   padding: 1px 5px;
 `;
 
+const SealWrapper = styled.div`
+  margin: 8px 160px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const SealIcon = styled.img`
+  justify-content: center;
+  margin-right: 0;
+  filter: FlipH;
+  height: 72px;
+`;
+
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   state = {
@@ -123,6 +139,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   }
 
   hasUserWon = () => this.props.commitment >= 8
+  sealMeUp = (index) => this.props.commitment > index * 2 ? Seal : EmptySeal;
 
   progress = () => {
     const { countdown } = this.state;
@@ -175,7 +192,27 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
             </RandomPosition>
           </div>
 
-          commitment: {this.props.commitment}
+          <div>
+            commitment: {this.props.commitment}
+          </div>
+
+          <SealWrapper>
+            <SealIcon src={this.sealMeUp(1)} role={'presentation'} />
+            <SealIcon src={this.sealMeUp(2)} role={'presentation'} />
+            <SealIcon src={this.sealMeUp(3)} role={'presentation'} />
+            <SealIcon src={this.sealMeUp(4)} role={'presentation'} />
+            <SealIcon src={this.sealMeUp(5)} role={'presentation'} />
+          </SealWrapper>
+        
+          {/* <div>
+            <LinearProgress variant="determinate" value={100} />
+          </div> */}
+
+          {this.state.countdown === 0 &&
+            <Typography variant="display2" gutterBottom>
+              {message}
+            </Typography>
+          }
         </DefaultWrapper>
       </div>
     );

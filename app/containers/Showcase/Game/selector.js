@@ -14,7 +14,7 @@ export const selectSadness = (state) => selectShowcaseDomain(state).get('sadness
 export const selectSurprise = (state) => selectShowcaseDomain(state).get('surprise').toFixed(FIXED_DECIMAL);
 export const selectCommitment = (state) => {
   const commitmentRate = selectShowcaseDomain(state).get('commitment');
-  const commitment = commitmentRate * (Math.random() * (50 - 10) + 10);  //eslint-disable-line
+  const commitment = commitmentRate + 0.05 * (Math.random() * (250 - 10) + 10);  //eslint-disable-line
   return commitment.toFixed(FIXED_DECIMAL);
 };
 
