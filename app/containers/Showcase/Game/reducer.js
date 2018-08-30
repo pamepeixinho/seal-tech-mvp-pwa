@@ -9,6 +9,7 @@ import { handle } from 'redux-pack';
 
 import {
   UPLOAD_IMAGE_FRAME,
+  SET_USER_RESULT,
 } from './constants';
 import { CLEAR_STATE } from '../../constants';
 
@@ -22,6 +23,7 @@ const initialState = fromJS({
   sadness: 0,
   surprise: 0,
   commitment: 0,
+  hasWon: false,
 });
 
 const handleEmotions = (state, action) =>
@@ -36,6 +38,8 @@ function startClassReducer(state = initialState, action) {
   switch (action.type) {
     case UPLOAD_IMAGE_FRAME:
       return handleEmotions(state, action);
+    case SET_USER_RESULT:
+      return state.merge({ hasWon: action.userHasWon });
     case CLEAR_STATE:
       return initialState;
 

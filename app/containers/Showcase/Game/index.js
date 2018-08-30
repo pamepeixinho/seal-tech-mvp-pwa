@@ -10,9 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Typography from '@material-ui/core/Typography';
+import { push } from 'react-router-redux';
 
 import injectReducer from 'utils/injectReducer';
 import AppBar from 'components/AppBar';
@@ -32,6 +30,7 @@ import {
 } from './selector';
 import {
   uploadImageFrame,
+  setUserResult,
 } from './actions';
 import reducer from './reducer';
 
@@ -123,20 +122,19 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
     this.emotionPositions = shuffleArray(positions);
   }
 
+  hasUserWon = () => this.props.commitment >= 8
+
   progress = () => {
     const { countdown } = this.state;
-    if (countdown > 0) {
-      this.setState({ countdown: countdown - 1 });
+    if (countdown === 0) {
+      this.props.goToFinishPage(this.hasUserWon());
+      return;
     }
+
+    this.setState({ countdown: countdown - 1 });
   };
 
   render() {
-    if (this.props.commitment >= 8) {
-      this.setState({ userWon: true });
-    }
-
-    const message = this.state.userWon ? 'You won' : 'you lose';
-
     return (
       <div>
         <AppBar />
@@ -178,12 +176,6 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
           </div>
 
           commitment: {this.props.commitment}
-
-          {this.state.countdown === 0 &&
-            <Typography variant="display2" gutterBottom>
-              {message}
-            </Typography>
-          }
         </DefaultWrapper>
       </div>
     );
@@ -201,10 +193,15 @@ Showcase.propTypes = {
   sadness: PropTypes.number,
   surprise: PropTypes.number,
   commitment: PropTypes.number,
+  goToFinishPage: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch, { match }) => ({
   uploadFrame: (imageSrc) => dispatch(uploadImageFrame(match.params.id, imageSrc)),
+  goToFinishPage: (userHasWon) => {
+    dispatch(setUserResult(userHasWon));
+    dispatch(push('/showcase/finish'));
+  },
 });
 
 const mapStateToProps = createStructuredSelector({

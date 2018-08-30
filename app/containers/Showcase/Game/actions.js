@@ -11,6 +11,7 @@ import {
   FINISH_CLASS,
   UPLOAD_IMAGE_FRAME,
   WEBCAM_HAS_BEEN_ALLLOWED,
+  SET_USER_RESULT,
 } from './constants';
 
 export function toggleActiveClass() {
@@ -32,4 +33,9 @@ export const uploadImageFrame = (id, image) => ({
 
 export const webcamAllowed = () => ({
   type: WEBCAM_HAS_BEEN_ALLLOWED,
+});
+
+export const setUserResult = (userHasWon) => ({
+  type: SET_USER_RESULT,
+  userHasWon,
 });
