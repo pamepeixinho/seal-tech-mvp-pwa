@@ -15,16 +15,17 @@ import EmotionsGif from 'images/emotions.gif';
 import AppBar from 'components/AppBar';
 
 const Img = styled.img`
-  width: 65%;
+  width: 100%;
   display: block;
   margin: auto;
-  padding-top: 100px;
+  padding: 100px 128px 0;
+  max-width: 1024px;
 `;
 
 const Button = styled(MuiButton)`
   display: block;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 60px;
 `;
 
 export class Landing extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

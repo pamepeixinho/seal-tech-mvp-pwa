@@ -34,8 +34,8 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   render() {
     const videoConstraints = {
-      width: 1280,
-      height: 720,
+      height: 840,
+      width: 704,
       facingMode: 'user',
     };
 
@@ -44,16 +44,16 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
         {this.props.isActive ?
           <Webcam
             audio={false}
-            height={290}
+            height={this.props.height}
             ref={this.setRef}
             screenshotFormat="image/jpeg"
             width={'100%'}
             onUserMedia={this.loop}
-            videoConstraints={videoConstraints}
             style={{ display: 'inline-block' }}
+            videoConstraints={videoConstraints}
           />
           :
-          <div style={{ width: '100%', height: 290, background: '#D8D8D8', display: 'inline-block' }} />
+          <div style={{ width: '100%', height: this.props.height, background: '#D8D8D8', display: 'inline-block' }} />
         }
       </div>
     );
@@ -62,6 +62,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
 VideoCapture.propTypes = {
   isActive: PropTypes.bool,
+  height: PropTypes.number,
   uploadFrame: PropTypes.func,
   webcamAllowedCallback: PropTypes.func,
 };

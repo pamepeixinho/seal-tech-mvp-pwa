@@ -36,11 +36,64 @@ import {
 } from './actions';
 import reducer from './reducer';
 
-const Paper = styled(MuiPaper)`
-  max-width: 690px;
-  min-height: 440px;
-  margin: 0 auto;
-  padding: 32px;
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
+  }
+  return array;
+};
+
+const positions = [
+  {
+    bottom: '10%',
+    right: '12%',
+    color: 'rgb(210, 67, 137)',
+  },
+  {
+    top: '5%',
+    right: '31%',
+    color: 'rgb(210, 67, 137)',
+  },
+  {
+    right: '10%',
+    top: '20%',
+    color: 'rgb(48, 208, 225)',
+  },
+  {
+    top: '12%',
+    left: '10%',
+    color: 'rgb(166, 230, 52)',
+  },
+  {
+    top: '38%',
+    left: '4%',
+    color: 'rgb(210, 67, 137)',
+  },
+  {
+    bottom: '25%',
+    left: '15%',
+    color: 'rgb(48, 208, 225)',
+  },
+  {
+    bottom: '4%',
+    right: '50%',
+    color: 'rgb(114, 41, 173)',
+  },
+  {
+    bottom: '40%',
+    right: '20%',
+    color: 'rgb(166, 230, 52)',
+  },
+];
+
+
+const RandomPosition = styled.div`
+  background: white;
+  position: absolute;
+  font-size: 20px;
+  padding: 1px 5px;
 `;
 
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -51,15 +104,25 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
     userWon: false,
   };
 
+  componentWillMount() {
+    this.suffle();
+  }
+
   componentDidMount() {
     this.timer = setInterval(this.progress, 100);
+    setInterval(this.suffle, 1000);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
+    clearInterval(this.suffle);
   }
 
   timer = null;
+
+  suffle = () => {
+    this.emotionPositions = shuffleArray(positions);
+  }
 
   progress = () => {
     const { progressCompleted } = this.state;
@@ -77,41 +140,50 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
     return (
       <div>
-        <AppBar title="Showcase" />
-        <DefaultWrapper>
-          <Paper style={{ position: 'relative' }}>
+        <AppBar />
+        <DefaultWrapper style={{ paddingTop: 65 }}>
+          <div style={{ position: 'relative', margin: '64px 16px 16px' }}>
             <VideoCapture
               isActive={this.state.progressCompleted < 100}
               uploadFrame={this.props.uploadFrame}
               webcamAllowedCallback={() => {}}
+              height={720}
             />
-            anger: {this.props.anger}
-            <br />
-            contempt: {this.props.contempt}
-            <br />
-            disgust: {this.props.disgust}
-            <br />
-            fear: {this.props.fear}
-            <br />
-            happiness: {this.props.happiness}
-            <br />
-            neutral: {this.props.neutral}
-            <br />
-            sadness: {this.props.sadness}
-            <br />
-            surprise: {this.props.surprise}
-            <br />
-            <br />
-            commitment: {this.props.commitment}
+            <RandomPosition style={this.emotionPositions[0]}>
+              anger: {this.props.anger}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[1]}>
+              contempt: {this.props.contempt}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[2]}>
+              disgust: {this.props.disgust}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[3]}>
+              fear: {this.props.fear}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[4]}>
+              happiness: {this.props.happiness}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[5]}>
+              neutral: {this.props.neutral}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[6]}>
+              sadness: {this.props.sadness}
+            </RandomPosition>
+            <RandomPosition style={this.emotionPositions[7]}>
+              surprise: {this.props.surprise}
+            </RandomPosition>
+          </div>
 
-            {this.state.progressCompleted === 100 &&
-              <Typography variant="display2" gutterBottom>
-                {message}
-              </Typography>
-            }
+          commitment: {this.props.commitment}
 
-            <LinearProgress variant="determinate" value={this.state.progressCompleted} />
-          </Paper>
+          {this.state.progressCompleted === 100 &&
+            <Typography variant="display2" gutterBottom>
+              {message}
+            </Typography>
+          }
+
+          <LinearProgress variant="determinate" value={this.state.progressCompleted} />
         </DefaultWrapper>
       </div>
     );
