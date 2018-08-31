@@ -203,16 +203,6 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
             <SealIcon src={this.sealMeUp(4)} role={'presentation'} />
             <SealIcon src={this.sealMeUp(5)} role={'presentation'} />
           </SealWrapper>
-        
-          {/* <div>
-            <LinearProgress variant="determinate" value={100} />
-          </div> */}
-
-          {this.state.countdown === 0 &&
-            <Typography variant="display2" gutterBottom>
-              {message}
-            </Typography>
-          }
         </DefaultWrapper>
       </div>
     );
