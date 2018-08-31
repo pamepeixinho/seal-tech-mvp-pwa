@@ -13,11 +13,12 @@ import { createStructuredSelector } from 'reselect';
 import { push } from 'react-router-redux';
 
 import injectReducer from 'utils/injectReducer';
-import AppBar from 'components/AppBar';
+// import AppBar from 'components/AppBar';
 import DefaultWrapper from 'components/DefaultWrapper';
 import VideoCapture from 'components/VideoCapture';
-import Seal from '../../../assets/images/progressbar_foca cheia.svg';
-import EmptySeal from '../../../assets/images/progressbar_foca vazia.svg';
+import Shield from 'images/shield.svg';
+import Seal from 'assets/images/progressbar_foca cheia.svg';
+import EmptySeal from 'assets/images/progressbar_foca vazia.svg';
 
 import {
   selectAnger,
@@ -97,7 +98,7 @@ const RandomPosition = styled.div`
 `;
 
 const SealWrapper = styled.div`
-  margin: 8px 160px;
+  margin: 48px 160px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -139,6 +140,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   }
 
   hasUserWon = () => this.props.commitment >= 8
+
   sealMeUp = (index) => this.props.commitment > index * 2 ? Seal : EmptySeal;
 
   progress = () => {
@@ -154,12 +156,15 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   render() {
     return (
       <div>
-        <AppBar />
-        <DefaultWrapper style={{ paddingTop: 65 }}>
-          <p style={{ margin: '32px', textAlign: 'center', fontSize: 24 }}>
-            {this.state.countdown}
-          </p>
-          <div style={{ position: 'relative', margin: '64px 16px 16px' }}>
+        {/* <AppBar /> */}
+        <DefaultWrapper style={{ paddingTop: 0 }}>
+          <div style={{ position: 'relative', textAlign: 'center' }}>
+            <img src={Shield} alt="shield" style={{ width: '160px', display: 'block', margin: '0 auto' }} />
+            <p style={{ position: 'absolute', fontSize: 24, top: '20%', left: '49%', color: 'white' }}>
+              {this.state.countdown}
+            </p>
+          </div>
+          <div style={{ position: 'relative', margin: '0 16px 16px' }}>
             <VideoCapture
               isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
@@ -191,11 +196,6 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               surprise: {this.props.surprise}
             </RandomPosition>
           </div>
-
-          <div>
-            commitment: {this.props.commitment}
-          </div>
-
           <SealWrapper>
             <SealIcon src={this.sealMeUp(1)} role={'presentation'} />
             <SealIcon src={this.sealMeUp(2)} role={'presentation'} />
