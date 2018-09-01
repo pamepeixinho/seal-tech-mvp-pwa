@@ -40,7 +40,18 @@ const ThanksSection = styled.div`
   text-align: center;
 `;
 
+const Link = styled.a`
+  color: #959595;
+
+  :hover {
+    color: #727272;
+  }
+`;
+
 export class Finish extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  lostText = 'Unfortunately, you lost this showcase game :(';
+  wonText = 'You WON. Call one co-founder to receive your candy :)';
+
   render() {
     return (
       <div>
@@ -48,19 +59,19 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
         <Paper>
           <LogoImg src={Logo} alt="logo" />
           <ThanksSection>
-            <h1 style={{ color: '#1ED0E3' }}>Thanks for participating of our showcase game!</h1>
-            <h2>
-              {this.props.hasWon ? 'You won' : 'You loose'}
-            </h2>
+            <h1 style={{ color: '#1ED0E3', fontWeight: 300 }}>Thanks for participating of our showcase game!</h1>
+            <h1 style={{ color: 'rgb(114, 41, 173)', margin: '64px 0' }}>
+              {this.props.hasWon ? this.wonText : this.lostText}
+            </h1>
             <h2 style={{ color: '#959595', fontWeight: 300, marginTop: 16 }}>
               Our objective here is to show a little of our work.
               Get in touch with us:
-              <div style={{ marginTop: 16, color: '#959595 !important' }} >
-                <a href="https://www.sealtech.io/"> https://www.sealtech.io/ </a>
+              <div style={{ marginTop: 16 }} >
+                <Link href="https://www.sealtech.io/"> https://www.sealtech.io/ </Link>
                 <br />
-                <a href="https://twitter.com/Sealtech4you"> @Sealtech4you </a>
+                <Link href="https://twitter.com/Sealtech4you"> @Sealtech4you </Link>
                 <br />
-                <a href="mailto:contact@sealtech.io"> contact@sealtech.io </a>
+                <Link href="mailto:contact@sealtech.io"> contact@sealtech.io </Link>
               </div>
             </h2>
           </ThanksSection>
