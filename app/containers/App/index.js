@@ -20,7 +20,7 @@ import routes from '../../routes/index';
 
 export default function App() {
   return (
-    <div>
+    <div style={{ width: '100%', height: '100%' }}>
       <Switch>
         {routes.map(({ path, component }) => (<Route exact key={path} path={path} component={component} />))}
         <Route component={NotFoundPage} />

@@ -100,11 +100,11 @@ const RandomPosition = styled.div`
 `;
 
 const SealWrapper = styled.div`
-  margin: 48px auto;
+  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  max-width: 160px;
+  max-width: 400px;
 `;
 
 const SealIcon = styled.img`
@@ -168,14 +168,14 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
   render() {
     return (
-      <div>
+      <div style={{ maxWidth: 1024, margin: 'auto' }}>
         {/* <AppBar /> */}
-        <DefaultWrapper style={{ paddingTop: 0 }}>
+        <DefaultWrapper style={{ paddingTop: 0, margin: 'auto' }}>
           <div style={{ position: 'relative', textAlign: 'center' }}>
             <img src={Shield} alt="shield" style={{ width: '160px', display: 'block', margin: '0 auto' }} />
             <CountdownNumber> {this.state.countdown} </CountdownNumber>
           </div>
-          <div style={{ position: 'relative', margin: '0 16px 16px' }}>
+          <div style={{ position: 'relative', margin: '0 auto', maxWidth: 704 }}>
             <VideoCapture
               isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
@@ -207,7 +207,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               surprise: {this.props.surprise}
             </RandomPosition>
           </div>
-          <h3>Commitment seal</h3>
+          <h3 style={{ textAlign: 'center', color: 'rgb(210, 67, 137)' }} >Commitment seal</h3>
           <SealWrapper>
             <SealIcon src={this.sealMeUp(1)} role={'presentation'} />
             <SealIcon src={this.sealMeUp(2)} role={'presentation'} />
