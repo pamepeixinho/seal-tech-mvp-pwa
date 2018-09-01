@@ -159,7 +159,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   progress = () => {
     const { countdown } = this.state;
     if (countdown === 0) {
-      // this.props.goToFinishPage(this.hasUserWon());
+      this.props.goToFinishPage(this.hasUserWon());
       return;
     }
 
