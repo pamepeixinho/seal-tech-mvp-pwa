@@ -111,6 +111,16 @@ const SealIcon = styled.img`
   height: 72px;
 `;
 
+const CountdownNumber = styled.span`
+  position: absolute;
+  font-size: 24px;
+  top: 33%;
+  left: 46%;
+  color: white;
+  text-align: center;
+  width: 60px;
+`;
+
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   state = {
@@ -146,7 +156,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   progress = () => {
     const { countdown } = this.state;
     if (countdown === 0) {
-      this.props.goToFinishPage(this.hasUserWon());
+      // this.props.goToFinishPage(this.hasUserWon());
       return;
     }
 
@@ -160,9 +170,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
         <DefaultWrapper style={{ paddingTop: 0 }}>
           <div style={{ position: 'relative', textAlign: 'center' }}>
             <img src={Shield} alt="shield" style={{ width: '160px', display: 'block', margin: '0 auto' }} />
-            <p style={{ position: 'absolute', fontSize: 24, top: '20%', left: '49%', color: 'white' }}>
-              {this.state.countdown}
-            </p>
+            <CountdownNumber> {this.state.countdown} </CountdownNumber>
           </div>
           <div style={{ position: 'relative', margin: '0 16px 16px' }}>
             <VideoCapture
