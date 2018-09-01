@@ -12,7 +12,8 @@ import { createStructuredSelector } from 'reselect';
 import MuiPaper from '@material-ui/core/Paper';
 
 import injectReducer from 'utils/injectReducer';
-import AppBar from 'components/AppBar';
+// import AppBar from 'components/AppBar';
+import Logo from 'images/logo-sealtech.png';
 
 import {
   selectWon,
@@ -27,13 +28,53 @@ const Paper = styled(MuiPaper)`
   top: 86px;
 `;
 
+const LogoImg = styled.img`
+  width: 75%;
+  margin: 0 auto;
+  display: block;
+`;
+
+const ThanksSection = styled.div`
+  margin: 32px auto;
+  width: 60%;
+  text-align: center;
+`;
+
+const Link = styled.a`
+  color: #959595;
+
+  :hover {
+    color: #727272;
+  }
+`;
+
 export class Finish extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  lostText = 'Unfortunately, you lost this showcase game :(';
+  wonText = 'You WON. Call one co-founder to receive your candy :)';
+
   render() {
     return (
       <div>
-        <AppBar />
+        {/* <AppBar /> */}
         <Paper>
-          <h1> {this.props.hasWon ? 'You won' : 'You loose'} </h1>
+          <LogoImg src={Logo} alt="logo" />
+          <ThanksSection>
+            <h1 style={{ color: '#1ED0E3', fontWeight: 300 }}>Thanks for participating of our showcase game!</h1>
+            <h1 style={{ color: 'rgb(114, 41, 173)', margin: '64px 0' }}>
+              {this.props.hasWon ? this.wonText : this.lostText}
+            </h1>
+            <h2 style={{ color: '#959595', fontWeight: 300, marginTop: 16 }}>
+              Our objective here is to show a little of our work.
+              Get in touch with us:
+              <div style={{ marginTop: 16 }} >
+                <Link href="https://www.sealtech.io/"> https://www.sealtech.io/ </Link>
+                <br />
+                <Link href="https://twitter.com/Sealtech4you"> @Sealtech4you </Link>
+                <br />
+                <Link href="mailto:contact@sealtech.io"> contact@sealtech.io </Link>
+              </div>
+            </h2>
+          </ThanksSection>
         </Paper>
       </div>
     );
