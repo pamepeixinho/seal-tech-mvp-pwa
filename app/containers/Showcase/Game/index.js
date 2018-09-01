@@ -46,45 +46,47 @@ const shuffleArray = (array) => {
   return array;
 };
 
-const positions = [
+const randomPosition = (initialPosition) => `${initialPosition + (Math.random() * 3)}%`;
+
+const positions = () => [
   {
-    bottom: '10%',
-    right: '12%',
+    bottom: randomPosition(10),
+    right: randomPosition(12),
     color: 'rgb(210, 67, 137)',
   },
   {
-    top: '5%',
-    right: '31%',
+    top: randomPosition(5),
+    right: randomPosition(31),
     color: 'rgb(210, 67, 137)',
   },
   {
-    right: '10%',
-    top: '20%',
+    right: randomPosition(10),
+    top: randomPosition(20),
     color: 'rgb(48, 208, 225)',
   },
   {
-    top: '12%',
-    left: '10%',
+    top: randomPosition(12),
+    left: randomPosition(10),
     color: 'rgb(166, 230, 52)',
   },
   {
-    top: '38%',
-    left: '4%',
+    top: randomPosition(38),
+    left: randomPosition(4),
     color: 'rgb(210, 67, 137)',
   },
   {
-    bottom: '25%',
-    left: '15%',
+    bottom: randomPosition(25),
+    left: randomPosition(15),
     color: 'rgb(48, 208, 225)',
   },
   {
-    bottom: '4%',
-    right: '50%',
+    bottom: randomPosition(4),
+    right: randomPosition(50),
     color: 'rgb(114, 41, 173)',
   },
   {
-    bottom: '40%',
-    right: '20%',
+    bottom: randomPosition(40),
+    right: randomPosition(15),
     color: 'rgb(166, 230, 52)',
   },
 ];
@@ -146,7 +148,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   timer = null;
 
   suffle = () => {
-    this.emotionPositions = shuffleArray(positions);
+    this.emotionPositions = shuffleArray(positions());
   }
 
   hasUserWon = () => this.props.commitment >= 8
