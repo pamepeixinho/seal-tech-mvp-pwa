@@ -100,10 +100,11 @@ const RandomPosition = styled.div`
 `;
 
 const SealWrapper = styled.div`
-  margin: 48px 160px;
+  margin: 48px auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 160px;
 `;
 
 const SealIcon = styled.img`
@@ -206,6 +207,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               surprise: {this.props.surprise}
             </RandomPosition>
           </div>
+          <h3>Commitment seal</h3>
           <SealWrapper>
             <SealIcon src={this.sealMeUp(1)} role={'presentation'} />
             <SealIcon src={this.sealMeUp(2)} role={'presentation'} />
