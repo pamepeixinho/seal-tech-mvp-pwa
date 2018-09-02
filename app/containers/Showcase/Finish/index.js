@@ -29,7 +29,7 @@ const Paper = styled(MuiPaper)`
 `;
 
 const LogoImg = styled.img`
-  width: 75%;
+  width: 50%;
   margin: 0 auto;
   display: block;
 `;
@@ -49,22 +49,20 @@ const Link = styled.a`
 `;
 
 export class Finish extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  lostText = 'Unfortunately, you lost this showcase game :(';
+  lostText = 'Unfortunately, you lost this game :(';
   wonText = 'You WON!! Call one of our co-founders to receive your candy :)';
 
   render() {
     return (
-      <div>
-        {/* <AppBar /> */}
-        <Paper>
-          <LogoImg src={Logo} alt="logo" />
-          <ThanksSection>
-            <h1 style={{ color: '#1ED0E3', fontWeight: 300 }}>Thanks for participating of our showcase game!</h1>
-            <h1 style={{ color: 'rgb(114, 41, 173)', margin: '64px 0' }}>
-              {this.props.hasWon ? this.wonText : this.lostText}
-            </h1>
-            <h2 style={{ color: '#959595', fontWeight: 300, marginTop: 16 }}>
-              {this.props.hasWon === false ? 'But do not get sad, our objective here is to show a little of our work. ' : null}
+      <div style={{ height: '100%', paddingTop: '20%' }}>
+        <LogoImg src={Logo} alt="logo" />
+        <ThanksSection>
+          <h1 style={{ color: '#1ED0E3', fontWeight: 300 }}>Thanks for playing!</h1>
+          <h1 style={{ color: 'rgb(114, 41, 173)', margin: '124px 0', fontSize: 44 }}>
+            {this.props.hasWon ? this.wonText : this.lostText}
+          </h1>
+          <h2 style={{ color: '#737373', fontWeight: 300, marginTop: 15 }}>
+            {this.props.hasWon === false ? 'But do not get sad, our objective here is to show a little of our work. ' : null}
               Get in touch with us:
               <div style={{ marginTop: 16 }} >
                 <Link href="https://www.sealtech.io/"> https://www.sealtech.io/ </Link>
@@ -73,9 +71,8 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
                 <br />
                 <Link href="mailto:contact@sealtech.io"> contact@sealtech.io </Link>
               </div>
-            </h2>
-          </ThanksSection>
-        </Paper>
+          </h2>
+        </ThanksSection>
       </div>
     );
   }
