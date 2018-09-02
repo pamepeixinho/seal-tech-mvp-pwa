@@ -46,45 +46,47 @@ const shuffleArray = (array) => {
   return array;
 };
 
-const positions = [
+const randomPosition = (initialPosition) => `${initialPosition + (Math.random() * 3)}%`;
+
+const positions = () => [
   {
-    bottom: '10%',
-    right: '12%',
+    bottom: randomPosition(10),
+    right: randomPosition(12),
     color: 'rgb(210, 67, 137)',
   },
   {
-    top: '5%',
-    right: '31%',
+    top: randomPosition(5),
+    right: randomPosition(31),
     color: 'rgb(210, 67, 137)',
   },
   {
-    right: '10%',
-    top: '20%',
+    right: randomPosition(10),
+    top: randomPosition(20),
     color: 'rgb(48, 208, 225)',
   },
   {
-    top: '12%',
-    left: '10%',
+    top: randomPosition(12),
+    left: randomPosition(10),
     color: 'rgb(166, 230, 52)',
   },
   {
-    top: '38%',
-    left: '4%',
+    top: randomPosition(38),
+    left: randomPosition(4),
     color: 'rgb(210, 67, 137)',
   },
   {
-    bottom: '25%',
-    left: '15%',
+    bottom: randomPosition(25),
+    left: randomPosition(15),
     color: 'rgb(48, 208, 225)',
   },
   {
-    bottom: '4%',
-    right: '50%',
+    bottom: randomPosition(4),
+    right: randomPosition(50),
     color: 'rgb(114, 41, 173)',
   },
   {
-    bottom: '40%',
-    right: '20%',
+    bottom: randomPosition(40),
+    right: randomPosition(15),
     color: 'rgb(166, 230, 52)',
   },
 ];
@@ -98,10 +100,11 @@ const RandomPosition = styled.div`
 `;
 
 const SealWrapper = styled.div`
-  margin: 48px 160px;
+  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 400px;
 `;
 
 const SealIcon = styled.img`
@@ -109,6 +112,16 @@ const SealIcon = styled.img`
   margin-right: 0;
   filter: FlipH;
   height: 72px;
+`;
+
+const CountdownNumber = styled.span`
+  position: absolute;
+  font-size: 24px;
+  top: 33%;
+  left: 46%;
+  color: white;
+  text-align: center;
+  width: 60px;
 `;
 
 export class Showcase extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -136,7 +149,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
   timer = null;
 
   suffle = () => {
-    this.emotionPositions = shuffleArray(positions);
+    this.emotionPositions = shuffleArray(positions());
   }
 
   hasUserWon = () => this.props.commitment >= 8
@@ -155,16 +168,14 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
 
   render() {
     return (
-      <div>
+      <div style={{ maxWidth: 1024, margin: 'auto' }}>
         {/* <AppBar /> */}
-        <DefaultWrapper style={{ paddingTop: 0 }}>
+        <DefaultWrapper style={{ paddingTop: 0, margin: 'auto' }}>
           <div style={{ position: 'relative', textAlign: 'center' }}>
             <img src={Shield} alt="shield" style={{ width: '160px', display: 'block', margin: '0 auto' }} />
-            <p style={{ position: 'absolute', fontSize: 24, top: '20%', left: '49%', color: 'white' }}>
-              {this.state.countdown}
-            </p>
+            <CountdownNumber> {this.state.countdown} </CountdownNumber>
           </div>
-          <div style={{ position: 'relative', margin: '0 16px 16px' }}>
+          <div style={{ position: 'relative', margin: '0 auto', maxWidth: 704 }}>
             <VideoCapture
               isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
@@ -196,6 +207,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               surprise: {this.props.surprise}
             </RandomPosition>
           </div>
+          <h3 style={{ textAlign: 'center', color: 'rgb(210, 67, 137)' }} >Commitment seal</h3>
           <SealWrapper>
             <SealIcon src={this.sealMeUp(1)} role={'presentation'} />
             <SealIcon src={this.sealMeUp(2)} role={'presentation'} />

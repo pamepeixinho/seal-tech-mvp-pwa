@@ -50,7 +50,7 @@ const Link = styled.a`
 
 export class Finish extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   lostText = 'Unfortunately, you lost this showcase game :(';
-  wonText = 'You WON. Call one co-founder to receive your candy :)';
+  wonText = 'You WON!! Call one of our co-founders to receive your candy :)';
 
   render() {
     return (
@@ -64,7 +64,7 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
               {this.props.hasWon ? this.wonText : this.lostText}
             </h1>
             <h2 style={{ color: '#959595', fontWeight: 300, marginTop: 16 }}>
-              Our objective here is to show a little of our work.
+              {this.props.hasWon === false ? 'But do not get sad, our objective here is to show a little of our work. ' : null}
               Get in touch with us:
               <div style={{ marginTop: 16 }} >
                 <Link href="https://www.sealtech.io/"> https://www.sealtech.io/ </Link>
