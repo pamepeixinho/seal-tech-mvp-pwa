@@ -20,14 +20,6 @@ import {
 } from '../Game/selector';
 import reducer from '../Game/reducer';
 
-const Paper = styled(MuiPaper)`
-  max-width: 690px;
-  margin: 0 auto;
-  padding: 32px;
-  position: relative;
-  top: 86px;
-`;
-
 const LogoImg = styled.img`
   width: 50%;
   margin: 0 auto;
@@ -55,7 +47,9 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
   render() {
     return (
       <div style={{ height: '100%', paddingTop: '20%' }}>
-        <LogoImg src={Logo} alt="logo" />
+        <a href="/showcase">
+          <LogoImg src={Logo} alt="logo" />
+        </a>
         <ThanksSection>
           <h1 style={{ color: '#1ED0E3', fontWeight: 300 }}>Thanks for playing!</h1>
           <h1 style={{ color: 'rgb(114, 41, 173)', margin: '124px 0', fontSize: 44 }}>
