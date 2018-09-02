@@ -6,9 +6,14 @@ const showcase = '/showcase';
 
 const showcaseRoutes = ([
   {
+    path: '/',
+    component: ShowcaseInitial,
+  },
+  {
     path: showcase,
     component: ShowcaseInitial,
-  }, {
+  },
+  {
     path: `${showcase}/game`,
     component: ShowcaseGame,
   },
