@@ -6,12 +6,14 @@ import ButtonSvg from '../../../assets/images/botao_normal.svg';
 
 const ButtonWrapper = styled.div`
   display: flex;
-  margin-top: 24px;
+  padding-top: 24px;
   justify-content: space-around;
   align-items: center;
+  background-color: white;
 `;
 
 const Icon = styled.img`
+  background-color: white;
   justify-content: center;
   margin-right: 0;
   filter: FlipH;

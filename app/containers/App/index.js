@@ -15,16 +15,16 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-
+import './index.css';
 import routes from '../../routes/index';
 
 export default function App() {
   return (
-    <React.Fragment>
+    <div className="App">
       <Switch>
         {routes.map(({ path, component }) => (<Route exact key={path} path={path} component={component} />))}
         <Route component={NotFoundPage} />
       </Switch>
-    </React.Fragment>
+    </div>
   );
 }

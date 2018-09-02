@@ -46,7 +46,7 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
 
   render() {
     return (
-      <div style={{ height: '100%', paddingTop: '20%' }}>
+      <div style={{ height: '100%', paddingTop: '20%', backgroundColor: 'white' }}>
         <a href="/showcase">
           <LogoImg src={Logo} alt="logo" />
         </a>
