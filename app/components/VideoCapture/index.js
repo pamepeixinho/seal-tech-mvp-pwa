@@ -26,7 +26,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
     if (this.state.wip) {
       // console.log('test', n++);
       const imageSrc = this.webcam.getScreenshot();
-      // uploadImage(imageSrc);
+      this.props.uploadFrame(imageSrc);
     }
   };
 
@@ -38,7 +38,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
     };
 
     return (
-      <React.Fragment>
+      <div style={{ width: '100%', textAlign: 'center' }}>
         {this.props.isActive ?
           <Webcam
             audio={false}
@@ -51,7 +51,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
         :
           <div style={{ width: '100%', height: this.props.height, background: '#D8D8D8', display: 'inline-block' }} />
         }
-      </React.Fragment>
+      </div>
     );
   }
 }
