@@ -15,7 +15,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import './index.css';
 import routes from '../../routes/index';
 
 export default function App() {

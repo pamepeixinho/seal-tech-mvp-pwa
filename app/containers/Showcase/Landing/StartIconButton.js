@@ -9,11 +9,9 @@ const ButtonWrapper = styled.div`
   padding-top: 24px;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
 `;
 
 const Icon = styled.img`
-  background-color: white;
   justify-content: center;
   margin-right: 0;
   filter: FlipH;

@@ -46,7 +46,7 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
 
   render() {
     return (
-      <div style={{ height: '100%', paddingTop: '20%', backgroundColor: 'white' }}>
+      <div style={{ height: '100%', paddingTop: '20%' }}>
         <a href="/showcase">
           <LogoImg src={Logo} alt="logo" />
         </a>
@@ -57,7 +57,7 @@ export class Finish extends React.PureComponent { // eslint-disable-line react/p
           </h1>
           <h2 style={{ color: '#737373', fontWeight: 300, marginTop: 15 }}>
             {this.props.hasWon === false ? 'But do not get sad, our objective here is to show a little of our work. ' : null}
-              <br />
+            <br />
               Get in touch with us:
               <div style={{ marginTop: 16 }} >
                 <Link href="https://www.sealtech.io/"> https://www.sealtech.io/ </Link>

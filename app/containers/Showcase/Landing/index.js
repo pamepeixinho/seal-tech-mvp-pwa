@@ -17,7 +17,6 @@ const Img = styled.img`
   margin: auto;
   padding: 100px 128px 0;
   max-width: 1024px;
-  background-color: white;
 `;
 
 export class Landing extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
