@@ -206,6 +206,7 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
+    "@cliener/react-webcam": "^0.3.2",
     "@material-ui/core": "^1.2.3",
     "@material-ui/icons": "^1.1.0",
     "babel-polyfill": "6.23.0",
@@ -233,7 +234,6 @@
     "react-router-dom": "4.1.1",
     "react-router-redux": "5.0.0-alpha.6",
     "react-star-rating-component": "^1.4.1",
-    "react-webcam": "^1.0.1",
     "redux": "3.6.0",
     "redux-immutable": "4.0.0",
     "redux-logger": "^3.0.6",

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Webcam from 'react-webcam';
+import Webcam from '@cliener/react-webcam';
 
 const TIMEOUT = 1000;
 class VideoCapture extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
-    wip: false,
+    wip: true,
   }
 
   componentWillUnmount() {
-    this.setState({ wip: false });
     clearInterval(this.interval);
   }
 
@@ -18,8 +17,6 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   loop = () => {
-    this.setState({ wip: true });
-    this.props.webcamAllowedCallback();
     this.interval = setInterval(() => {
       this.capture();
     }, TIMEOUT);
@@ -27,38 +24,38 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   capture = () => {
     if (this.state.wip) {
+      // console.log('test', n++);
       const imageSrc = this.webcam.getScreenshot();
-      this.props.uploadFrame(imageSrc);
+      // uploadImage(imageSrc);
     }
   };
 
   render() {
     const videoConstraints = {
-      height: 840,
-      width: 704,
+      width: 1280,
+      height: 720,
       facingMode: 'user',
     };
 
     return (
-      <div style={{ width: '100%', textAlign: 'center' }}>
+      <React.Fragment>
         {this.props.isActive ?
           <Webcam
             audio={false}
-            height={this.props.height}
             ref={this.setRef}
-            screenshotFormat="image/jpeg"
-            width={'100%'}
-            onUserMedia={this.loop}
             style={{ display: 'inline-block' }}
+            screenshotFormat="image/jpeg"
+            onUserMedia={this.loop}
             videoConstraints={videoConstraints}
           />
-          :
+        :
           <div style={{ width: '100%', height: this.props.height, background: '#D8D8D8', display: 'inline-block' }} />
         }
-      </div>
+      </React.Fragment>
     );
   }
 }
+
 
 VideoCapture.propTypes = {
   isActive: PropTypes.bool,
