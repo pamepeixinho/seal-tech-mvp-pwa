@@ -24,7 +24,6 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   capture = () => {
     if (this.state.wip) {
-      // console.log('test', n++);
       const imageSrc = this.webcam.getScreenshot();
       this.props.uploadFrame(imageSrc);
     }
