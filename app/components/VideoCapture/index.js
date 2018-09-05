@@ -37,7 +37,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
     };
 
     return (
-      <div style={{ width: '100%', textAlign: 'center' }}>
+      <div>
         {this.props.isActive ?
           <Webcam
             audio={false}
