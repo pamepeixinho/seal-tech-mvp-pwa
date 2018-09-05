@@ -45,7 +45,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
           <Webcam
             audio={false}
             ref={this.setRef}
-            style={{ display: 'inline-block', height: 720, width: '100%' }}
+            style={{ display: 'inline-block', height: 705 }}
             screenshotFormat="image/jpeg"
             onUserMedia={this.loop}
             videoConstraints={videoConstraints}
