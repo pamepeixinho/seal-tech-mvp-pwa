@@ -8,14 +8,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import EmotionsGif from 'images/emotions-optimized.gif';
-import AppBar from 'components/AppBar';
 import StartIconButton from './StartIconButton';
 
 const Img = styled.img`
   width: 100%;
   display: block;
   margin: auto;
-  padding: 50px 64px 0;
+  padding: 16px 64px 0;
   max-width: 1024px;
 `;
 
