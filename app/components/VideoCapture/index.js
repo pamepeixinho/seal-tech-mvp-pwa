@@ -31,9 +31,12 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   render() {
     const videoConstraints = {
-      width: 768,
-      height: 1024,
-      facingMode: 'user',
+      video: {
+        width: 1280,
+        height: 720,
+        facingMode: 'user',
+      },
+      audio: false,
     };
 
     return (
@@ -42,7 +45,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
           <Webcam
             audio={false}
             ref={this.setRef}
-            style={{ display: 'inline-block' }}
+            style={{ display: 'inline-block', height: 720 }}
             screenshotFormat="image/jpeg"
             onUserMedia={this.loop}
             videoConstraints={videoConstraints}
