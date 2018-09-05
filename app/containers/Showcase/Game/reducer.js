@@ -29,7 +29,16 @@ const initialState = fromJS({
 const handleEmotions = (state, action) =>
   handle(state, action, {
     success: (prevState) => {
-      const { anger, contempt, disgust, fear, happiness, neutral, sadness, surprise, commitment } = action.payload;
+      let { anger, contempt, disgust, fear, happiness, neutral, sadness, surprise, commitment } = action.payload;
+      anger = anger || 0;
+      contempt = contempt || 0;
+      disgust = disgust || 0;
+      fear = fear || 0;
+      happiness = happiness || 0;
+      neutral = neutral || 0;
+      sadness = sadness || 0;
+      surprise = surprise || 0;
+      commitment = commitment || 0;
       return prevState.merge({ anger, contempt, disgust, fear, happiness, neutral, sadness, surprise, commitment });
     },
   });
