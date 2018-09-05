@@ -66,12 +66,12 @@ const positions = () => [
   },
   {
     top: randomPosition(12),
-    left: randomPosition(12),
+    left: randomPosition(10),
     color: 'rgb(166, 230, 52)',
   },
   {
     top: randomPosition(38),
-    left: randomPosition(4),
+    left: randomPosition(10),
     color: 'rgb(210, 67, 137)',
   },
   {
