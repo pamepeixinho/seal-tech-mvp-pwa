@@ -152,14 +152,21 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
     this.emotionPositions = shuffleArray(positions());
   }
 
-  hasUserWon = () => this.props.commitment >= 8
+  hasUserWon = () => this.props.commitment > 8
 
   sealMeUp = (index) => this.props.commitment > index * 2 ? Seal : EmptySeal;
 
   progress = () => {
     const { countdown } = this.state;
+
+    if (this.hasUserWon()) {
+      this.setState({
+        hasUserWon: true,
+      });
+    }
+
     if (countdown === 0) {
-      this.props.goToFinishPage(this.hasUserWon());
+      this.props.goToFinishPage(this.state.hasUserWon);
       return;
     }
 
