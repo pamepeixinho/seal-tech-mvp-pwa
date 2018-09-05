@@ -87,7 +87,7 @@ export const selectCommitment = (state) => {
   const emptyEmotions = selectEmptyEmotions(state);
 
   // WORKAROUND: when there's no one
-  if (commitmentRate === 0 && emptyEmotions === false) {
+  if (commitmentRate === 0 && emptyEmotions) {
     return 0;
   }
 
