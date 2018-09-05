@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import EmotionsGif from 'images/emotions.gif';
+import EmotionsGif from 'images/emotions-optimized.gif';
 import AppBar from 'components/AppBar';
 import StartIconButton from './StartIconButton';
 
