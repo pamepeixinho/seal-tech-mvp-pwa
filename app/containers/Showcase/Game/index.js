@@ -117,7 +117,7 @@ const SealIcon = styled.img`
 const CountdownNumber = styled.span`
   position: absolute;
   font-size: 24px;
-  top: 33%;
+  top: 29%;
   left: 46%;
   color: white;
   text-align: center;
@@ -179,7 +179,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
         {/* <AppBar /> */}
         <DefaultWrapper style={{ paddingTop: 0, margin: 'auto' }}>
           <div style={{ position: 'relative', textAlign: 'center' }}>
-            <img src={Shield} alt="shield" style={{ width: '160px', display: 'block', margin: '0 auto' }} />
+            <img src={Shield} alt="shield" style={{ width: '110px', display: 'block', margin: '0 auto' }} />
             <CountdownNumber> {this.state.countdown} </CountdownNumber>
           </div>
           <div style={{ position: 'relative', margin: '0 auto', maxWidth: 704 }}>
