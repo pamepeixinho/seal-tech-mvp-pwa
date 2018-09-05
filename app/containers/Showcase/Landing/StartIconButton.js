@@ -6,7 +6,7 @@ import ButtonSvg from '../../../assets/images/botao_normal.svg';
 
 const ButtonWrapper = styled.div`
   display: flex;
-  padding-top: 24px;
+  padding-top: 8px;
   justify-content: space-around;
   align-items: center;
 `;
@@ -15,7 +15,7 @@ const Icon = styled.img`
   justify-content: center;
   margin-right: 0;
   filter: FlipH;
-  height: 180px;
+  height: 164px;
 `;
 
 const StartIconButton = () => (

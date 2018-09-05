@@ -20,7 +20,7 @@ export const selectCommitment = (state) => {
     return 0;
   }
 
-  const commitment = commitmentRate + 0.05 * (Math.random() * (250 - 10) + 10);  //eslint-disable-line
+  const commitment = commitmentRate + 0.05 * (Math.random() * (170 - 2) + 10);  //eslint-disable-line
   return commitment.toFixed(FIXED_DECIMAL);
 };
 
