@@ -31,8 +31,8 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
 
   render() {
     const videoConstraints = {
-      width: 1280,
-      height: 720,
+      width: 768,
+      height: 1024,
       facingMode: 'user',
     };
 
