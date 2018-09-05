@@ -23,7 +23,7 @@ export class Landing extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <React.Fragment>
-        <AppBar />
+        {/* <AppBar /> */}
         <Img src={EmotionsGif} alt="emotions gif" />
         <StartIconButton />
       </React.Fragment>
