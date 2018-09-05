@@ -14,7 +14,7 @@ const Img = styled.img`
   width: 100%;
   display: block;
   margin: auto;
-  padding: 16px 64px 0;
+  padding: 0 64px 0;
   max-width: 1024px;
 `;
 

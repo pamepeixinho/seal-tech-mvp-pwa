@@ -182,7 +182,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
             <img src={Shield} alt="shield" style={{ width: '110px', display: 'block', margin: '0 auto' }} />
             <CountdownNumber> {this.state.countdown} </CountdownNumber>
           </div>
-          <div style={{ position: 'relative', margin: '0 auto', maxWidth: 704 }}>
+          <div style={{ position: 'relative', margin: '0 auto', maxWidth: 690 }}>
             <VideoCapture
               isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
