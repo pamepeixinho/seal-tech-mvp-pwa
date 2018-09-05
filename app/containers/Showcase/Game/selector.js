@@ -20,8 +20,13 @@ export const selectCommitment = (state) => {
     return 0;
   }
 
-  const commitment = commitmentRate + 0.05 * (Math.random() * (170 - 2) + 10);  //eslint-disable-line
-  return commitment.toFixed(FIXED_DECIMAL);
+  try {
+    let commitment = commitmentRate + 0.05 * (Math.random() * (170 - 2) + 10);  //eslint-disable-line 
+    commitment = commitment.toFixed(FIXED_DECIMAL);
+    return commitment;
+  } catch (error) {
+    return 0;
+  }
 };
 
 export const selectWon = (state) => selectShowcaseDomain(state).get('hasWon');
