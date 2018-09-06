@@ -31,7 +31,6 @@ import reducer from './reducer';
 
 const Paper = styled(MuiPaper)`
   max-width: 690px;
-  min-height: 440px;
   margin: 0 auto;
   padding: 32px;
 `;
@@ -42,40 +41,41 @@ const ActionsSection = styled.div`
 `;
 
 export class StartClass extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  startButtonInstruction = `When your video class is about to begin, press the "Start the class" button to start recording. 
+  If you need to pause, just press "Pause the class"`
+  allowWebCam = 'Click on "Allow" when your browser ask by a popup'
+  finishButtonInstruction = 'After you finish your class, just press "Stop the class"'
+  startButton = 'Start the class'
+  pauseButton = 'Pause the class'
+  stopButton = 'Stop the class'
+
   render() {
     return (
       <div>
         <AppBar />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
-            <h4 style={{ marginBottom: 8 }}>
-              Muito Obrigado por concordar em participar do teste!
-              Para começar pedimos para seguir as instruções abaixo:
+            <h4 style={{ marginBottom: 8, marginTop: 0 }}>
+              Thank you for using our tool. To start the video you just need to follow these instructions:
             </h4>
             <ol>
-              <li>
-                Clique em "Permitir" se seu browser pedir o acesso via popup
-              </li>
-              <li>
-                Quando estiver com a video aula prestes a começar, pressione o botão para começar a
-                 gravação (Se precisar pausar, pressione "Pausar a gravação")
-              </li>
-              <li>
-                Para finalizar a gravação após acabar a video aula, pressione "Finalizar aula"
-              </li>
+              <li>{this.startButtonInstruction}</li>
+              <li>{this.allowWebCam}</li>
+              <li>{this.finishButtonInstruction}</li>
             </ol>
-            <VideoCapture
-              isActive={this.props.isActiveClass}
-              uploadFrame={this.props.uploadFrame}
-              webcamAllowedCallback={this.props.triggerWebcamAllowed}
-            />
+            { this.props.isActiveClass ?
+              <VideoCapture
+                isActive={this.props.isActiveClass}
+                uploadFrame={this.props.uploadFrame}
+                webcamAllowedCallback={this.props.triggerWebcamAllowed}
+              /> : null}
             <ActionsSection>
               <Button
                 color="secondary"
                 variant="raised"
                 onClick={this.props.toggleActiveClass}
               >
-                {this.props.isActiveClass && this.props.isWebcamAllowed ? 'Pausar a gravação' : 'Começar a gravação'}
+                {this.props.isActiveClass && this.props.isWebcamAllowed ? this.pauseButton : this.startButton}
               </Button>
               { this.props.isActiveClass && this.props.isWebcamAllowed &&
                 <Button
@@ -84,7 +84,7 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
                   onClick={this.props.goToFinishPage}
                   style={{ marginLeft: 32 }}
                 >
-                  Finalizar aula
+                  {this.stopButton}
                 </Button>
               }
             </ActionsSection>

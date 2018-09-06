@@ -187,6 +187,7 @@ export class Showcase extends React.PureComponent { // eslint-disable-line react
               isActive={this.state.countdown < 100}
               uploadFrame={this.props.uploadFrame}
               webcamAllowedCallback={() => {}}
+              height={705}
             />
             <RandomPosition style={this.emotionPositions[0]}>
               anger: {this.props.anger}
