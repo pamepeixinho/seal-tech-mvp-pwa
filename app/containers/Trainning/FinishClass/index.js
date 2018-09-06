@@ -14,7 +14,7 @@ import DefaultWrapper from 'components/DefaultWrapper';
 import AppBar from 'components/AppBar';
 
 import reducer from './reducer';
-import { selectGrade, makeSelectQuestions } from './selectors';
+import { selectGrade, makeSelectQuestions, makeShouldButtonBeEnabled } from './selectors';
 import { updateGrade, updateQuestion, uploadAndFinish } from './actions';
 import SubjectQuestion from './SubjectQuestion';
 import {
@@ -36,6 +36,9 @@ const Questions = styled.span`
 `;
 
 class FinishClass extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  thanksText = 'Thank you for participating. Answer our last questions to finish this test:'
+  explanation = 'Use 1 to 5 scale to answer these questions, where 5 means "I totally agree" and 1 means "I totally disagree"'
+
   renderCustomIcon = () => (
     <span style={{ marginRight: 16 }}>
       <Brightness1 />
@@ -48,52 +51,29 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
         <AppBar />
         <DefaultWrapper>
           <Paper>
-            <h4 style={{ marginBottom: 8 }}>
-              Muito Obrigado por participar do teste até o final!
-              Falta pouquinho para acabar! Responda as últimas perguntas
-              e pressione o botão "Finalizar".
-            </h4>
-            {/* <div style={{ marginTop: 16 }}>
-              <Questions>Faça a provinha do curso, se houver, e insira o resultado:</Questions>
-              <form
-                noValidate
-                autoComplete="off"
-                style={{ display: 'inline', marginLeft: '32px' }}
-              >
-                <TextField
-                  id="grade"
-                  label="Nota"
-                  value={this.props.grade}
-                  onChange={this.props.updateGrade}
-                  margin="normal"
-                />
-              </form>
-            </div> */}
+            <h4 style={{ marginBottom: 8 }}>{this.thanksText} </h4>
             <div style={{ marginTop: 16 }}>
-              <Questions>
-                Responda o questionário abaixo sobre a aula que vocês acabou de assistir.
-                Utilize uma escala de 1-5, onde 5 significa concordo plenamente e 1 discordo plenamente.
-              </Questions>
+              <Questions>{this.explanation}</Questions>
               <SubjectQuestion
-                title="Conteúdo"
+                title="Content"
                 openQuestionType={OPEN_QUESTIONS_SUBJECT}
                 openQuestions={this.props.openQuestions}
                 updateOpenQuestionByType={this.props.updateOpenQuestionByType}
               />
               <SubjectQuestion
-                title="Engajamento"
+                title="Commitment"
                 openQuestionType={OPEN_QUESTIONS_COMMITMENT}
                 openQuestions={this.props.openQuestions}
                 updateOpenQuestionByType={this.props.updateOpenQuestionByType}
               />
               <SubjectQuestion
-                title="Ritmo"
+                title="Rythm"
                 openQuestionType={OPEN_QUESTIONS_RYTHM}
                 openQuestions={this.props.openQuestions}
                 updateOpenQuestionByType={this.props.updateOpenQuestionByType}
               />
               <SubjectQuestion
-                title="Didática"
+                title="Didactics"
                 openQuestionType={OPEN_QUESTIONS_DIDACTICS}
                 openQuestions={this.props.openQuestions}
                 updateOpenQuestionByType={this.props.updateOpenQuestionByType}
@@ -105,8 +85,9 @@ class FinishClass extends React.PureComponent { // eslint-disable-line react/pre
                 variant="raised"
                 style={{ display: 'inline-block' }}
                 onClick={this.props.finish}
+                disabled={!this.props.buttonEnabled}
               >
-                Finalizar
+                Finish
               </Button>
             </div>
           </Paper>
@@ -125,6 +106,7 @@ FinishClass.propTypes = {
 const mapStateToProps = createStructuredSelector({
   grade: selectGrade,
   openQuestions: makeSelectQuestions(),
+  buttonEnabled: makeShouldButtonBeEnabled(),
 });
 
 const mapDispatchToProps = (dispatch, { match }) => ({
