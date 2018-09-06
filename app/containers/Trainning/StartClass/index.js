@@ -55,14 +55,18 @@ export class StartClass extends React.PureComponent { // eslint-disable-line rea
         <AppBar />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
-            <h4 style={{ marginBottom: 8, marginTop: 0 }}>
-              Thank you for using our tool. To start the video you just need to follow these instructions:
-            </h4>
-            <ol>
-              <li>{this.startButtonInstruction}</li>
-              <li>{this.allowWebCam}</li>
-              <li>{this.finishButtonInstruction}</li>
-            </ol>
+            {!this.props.isActiveClass &&
+              <React.Fragment>
+                <h4 style={{ marginBottom: 8, marginTop: 0 }}>
+                  Thank you for using our tool. To start the video you just need to follow these instructions:
+                </h4>
+                <ol>
+                  <li>{this.startButtonInstruction}</li>
+                  <li>{this.allowWebCam}</li>
+                  <li>{this.finishButtonInstruction}</li>
+                </ol>
+              </React.Fragment>
+            }
             { this.props.isActiveClass ?
               <VideoCapture
                 isActive={this.props.isActiveClass}

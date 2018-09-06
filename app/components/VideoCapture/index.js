@@ -17,6 +17,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   loop = () => {
+    this.props.webcamAllowedCallback();
     this.interval = setInterval(() => {
       this.capture();
     }, TIMEOUT);
