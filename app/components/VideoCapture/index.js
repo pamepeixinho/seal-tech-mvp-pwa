@@ -17,6 +17,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   loop = () => {
+    this.props.webcamAllowedCallback();
     this.interval = setInterval(() => {
       this.capture();
     }, TIMEOUT);
@@ -45,7 +46,7 @@ class VideoCapture extends React.PureComponent { // eslint-disable-line react/pr
           <Webcam
             audio={false}
             ref={this.setRef}
-            style={{ display: 'inline-block', height: 705 }}
+            style={{ display: 'inline-block', height: this.props.height }}
             screenshotFormat="image/jpeg"
             onUserMedia={this.loop}
             videoConstraints={videoConstraints}

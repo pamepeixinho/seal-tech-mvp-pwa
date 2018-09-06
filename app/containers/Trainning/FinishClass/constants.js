@@ -4,39 +4,39 @@ export const UPDATE_QUESTION_BY_TYPE = 'app/containers/HomePage/UPDATE_QUESTION_
 export const OPEN_QUESTIONS_SUBJECT = {
   interesting: {
     key: 'interesting',
-    question: 'O assunto é interessante e gostaria de saber mais sobre.',
+    question: 'The subject is interesting and you would like to know more about it *',
   },
 };
 
 export const OPEN_QUESTIONS_RYTHM = {
   noPause: {
     key: 'noPause',
-    question: 'É possível acompanhar o vídeo sem precisar pausar e revisitar trechos.',
+    question: "It's possible to follow the video class without needing to pause or see again some parts *",
   },
 };
 
 export const OPEN_QUESTIONS_DIDACTICS = {
   likeDidactics: {
     key: 'likeDidactics',
-    question: 'A maneira como o conteúdo é apresentado se conecta com a minha maneira de aprender.',
+    question: 'The way the content is presented connects with my way to learn *',
   },
   goodExamples: {
     key: 'goodExamples',
-    question: 'As explicações e analogias são claras e os exemplos são esclarecedores.',
+    question: 'The explanations are clear and the examples are illustrative *',
   },
 };
 
 export const OPEN_QUESTIONS_COMMITMENT = {
   goodExperience: {
     key: 'goodExperience',
-    question: 'A experiência foi proveitosa',
+    question: 'The experience is profitable *',
   },
   haveCommitment: {
     key: 'haveCommitment',
-    question: 'Me senti engajado com o vídeo.',
+    question: 'I felt myself enganged with the video class *',
   },
   continueVideosLikeThis: {
     key: 'continueVideosLikeThis',
-    question: 'Continuaria a ver mais vídeos sobre o mesmo assunto.',
+    question: 'I would continue to see more videos about the same subject *',
   },
 };

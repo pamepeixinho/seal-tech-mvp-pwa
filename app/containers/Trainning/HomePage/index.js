@@ -31,6 +31,8 @@ class HomePage extends React.PureComponent {
 
   handleLinkChange = (evt) => this.props.handleChange('link', evt.target.value)
 
+  widthWrapper = () => this.props.width === 'xs' ? '100%' : 'calc(100% - 256px)'
+
   render() {
     const buttonDisabled = this.props.name === '' || this.props.link === '';
     return (
@@ -38,14 +40,14 @@ class HomePage extends React.PureComponent {
         <AppBar />
         <DefaultWrapper>
           <Paper style={{ position: 'relative' }}>
-            <h4 style={{ marginBottom: 0 }}>
-              Informe os dados para o teste e pressione o botão para começar:
+            <h4 style={{ margin: 0 }}>
+              Provide a small description of your current online class:
             </h4>
             <form noValidate autoComplete="off">
-              <div style={{ width: this.props.width === 'xs' ? '100%' : 'calc(100% - 256px)', paddingBottom: 16 }}>
+              <div style={{ width: this.widthWrapper(), paddingBottom: 16, marginTop: 32 }}>
                 <TextField
                   id="name"
-                  label="Nome"
+                  label="Name (First and Last)"
                   value={this.props.name}
                   onChange={this.handleNameChange}
                   margin="normal"
@@ -56,7 +58,7 @@ class HomePage extends React.PureComponent {
               </div>
               <TextField
                 id="link"
-                label="Link"
+                label="Class link"
                 value={this.props.link}
                 onChange={this.handleLinkChange}
                 margin="normal"
@@ -65,15 +67,26 @@ class HomePage extends React.PureComponent {
                 style={{ display: 'block' }}
               />
             </form>
-            <p>Atenção: pedimos que nos dê acesso na webcam para colhermos alguns dados, mas fique tranquilo porque não iremos amarzenar nada :) </p>
+            <p
+              style={{
+                textDecoration: 'italic',
+                color: '#91918E',
+                fontSize: 14,
+                width: '100%',
+                marginTop: 32,
+                border: '1px solid',
+                padding: 12 }}
+            >
+              Attention: we ask your webcam permission to extract some data, but we'll not store your images.
+            </p>
             <Button
               color="secondary"
               variant="raised"
               onClick={this.props.goToNextStep}
               disabled={buttonDisabled}
-              style={{ marginTop: 32, position: 'absolute', bottom: 22, right: 32 }}
+              style={{ marginTop: 32, position: 'absolute', bottom: 18, right: 32 }}
             >
-              { this.props.isLoading ? <CircularProgress size={24} /> : 'Começar' }
+              { this.props.isLoading ? <CircularProgress size={24} /> : 'Start' }
             </Button>
           </Paper>
         </DefaultWrapper>
