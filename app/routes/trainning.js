@@ -2,7 +2,7 @@ import HomePage from 'containers/Trainning/HomePage/Loadable';
 import StartClass from 'containers/Trainning/StartClass/Loadable';
 import FinishClass from 'containers/Trainning/FinishClass/Loadable';
 
-const trainning = '/treinamento';
+const trainning = '/trainning';
 
 const trainningRoutes = ([
   {
@@ -10,11 +10,11 @@ const trainningRoutes = ([
     component: HomePage,
   },
   {
-    path: `${trainning}/comecar-aula/:id`,
+    path: `${trainning}/start-class/:id`,
     component: StartClass,
   },
   {
-    path: `${trainning}/finalizar-aula/:id`,
+    path: `${trainning}/finish-class/:id`,
     component: FinishClass,
   },
 ]);
