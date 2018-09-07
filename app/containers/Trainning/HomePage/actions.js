@@ -24,7 +24,7 @@ export const goToNextStep = () => (dispatch, getState) => {
     (data) => {
       const { id } = data;
       dispatch(setLoading(false));
-      dispatch(push(`/treinamento/comecar-aula/${id}`));
+      dispatch(push(`/trainning/start-class/${id}`));
     },
     () => dispatch(setLoading(false))
   );
