@@ -4,14 +4,14 @@ export const UPDATE_QUESTION_BY_TYPE = 'app/containers/HomePage/UPDATE_QUESTION_
 export const OPEN_QUESTIONS_SUBJECT = {
   interesting: {
     key: 'interesting',
-    question: 'The subject is interesting and you would like to know more about it *',
+    question: 'The subject was interesting and you would like to know more about it *',
   },
 };
 
 export const OPEN_QUESTIONS_RYTHM = {
   noPause: {
     key: 'noPause',
-    question: "It's possible to follow the video class without needing to pause or see again some parts *",
+    question: 'It was possible to follow the video class without needing to pause or see again some parts *',
   },
 };
 
@@ -29,11 +29,11 @@ export const OPEN_QUESTIONS_DIDACTICS = {
 export const OPEN_QUESTIONS_COMMITMENT = {
   goodExperience: {
     key: 'goodExperience',
-    question: 'The experience is profitable *',
+    question: 'The experience was benefiting *',
   },
   haveCommitment: {
     key: 'haveCommitment',
-    question: 'I felt myself enganged with the video class *',
+    question: 'I felt engaged with the video class *',
   },
   continueVideosLikeThis: {
     key: 'continueVideosLikeThis',
